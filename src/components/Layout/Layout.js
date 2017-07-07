@@ -1,17 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import AppHeader from '../AppHeader/';
 
 import './styles.css';
 
 const Layout = ({ children }) => (
     <div className="appContentWrapper">
         <div className="appHeader">
-            {/* Might want to put your header bar here... */}
+            <AppHeader />
         </div>
         <div className="appContent">
             {children}
         </div>
-        {/* And a footer here, but not on the login route... */}
+        <footer className="appFooter">© 2017 Boomtown Corp. All Rights Reserved</footer>
     </div>
 );
 

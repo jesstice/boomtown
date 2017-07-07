@@ -1,8 +1,10 @@
 import React from 'react';
 import './styles.css';
 
-const Items = () => (
-    <h1>So many items!</h1>
+import ItemCardList from '../../components/ItemCardList/';
+
+const Items = ({ itemsData }) => (
+    <ItemCardList itemsData={itemsData} />
 );
 
 export default Items;
