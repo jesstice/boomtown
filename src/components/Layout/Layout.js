@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AppHeader from '../AppHeader/';
+import Header from '../Header/';
 
 import './styles.css';
 
 const Layout = ({ children }) => (
     <div className="appContentWrapper">
         <div className="appHeader">
-            <AppHeader />
+            <Header />
         </div>
         <div className="appContent">
             {children}

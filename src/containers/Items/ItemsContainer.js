@@ -1,40 +1,28 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import store from '../../redux/store';
+import * as actions from '../../redux/actions';
+
 import Items from './Items';
 import Loader from '../../components/Loader/';
 
 class ItemsContainer extends Component {
 
-    constructor() {
-        super();
-
-        this.state = {
-            loading: true,
-            itemsData: []
-        };
-    }
-
     componentDidMount() {
-        Promise.all(['http://localhost:3001/items', 'http://localhost:3001/users'].map(url => (
-            fetch(url).then(response => response.json())
-        ))).then(json => {
-            const [items, users] = json;
-            const itemsWithOwners = items.map(item => {
-                const itemOwner = users.filter(user => user.id === item.itemOwner);
-                item.itemOwner = itemOwner[0];
-                return item;
-            });
-
-            this.setState({
-                itemsData: itemsWithOwners,
-                loading: false
-            });
-        });
+        store.dispatch(actions.getItems());
     }
 
     render() {
-        if (this.state.loading) return <Loader />;
-        return <Items itemsData={this.state.itemsData} />;
+        if (this.props.loading) return <Loader />;
+        return <Items itemsData={this.props.itemsData} />;
     }
 }
 
-export default ItemsContainer;
+function mapStateToProps(state) {
+    return {
+        loading: state.loading,
+        itemsData: state.itemsData
+    };
+}
+
+export default connect(mapStateToProps)(ItemsContainer);
