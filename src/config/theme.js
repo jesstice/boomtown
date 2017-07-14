@@ -15,4 +15,12 @@ export default getMuiTheme({
     appBar: {
         color: white,
     }
+    // raisedButton: {
+    //     color: palette.alternateTextColor,
+    //     textColor: palette.textColor,
+    //     primaryColor: palette.primary1Color,
+    //     primaryTextColor: palette.alternateTextColor,
+    //     secondaryColor: palette.accent1Color,
+    //     secondaryTextColor: palette.alternateTextColor
+    // }
 });
