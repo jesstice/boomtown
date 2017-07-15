@@ -1,0 +1,20 @@
+.itemCardWrapper {
+    padding: 1%;
+    width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+    .itemCardWrapper {
+        width: 50%;
+    }
+}
+
+@media only screen and (min-width: 960px) {
+    .itemCardWrapper {
+        width: 33%;
+    }
+}
+
+.react-gravatar {
+    border-radius: 50%;
+}

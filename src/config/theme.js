@@ -10,17 +10,10 @@ export default getMuiTheme({
         textColor: blueGrey900,
         alternateTextColor: white,
         primary1Color: lightBlue200,
-        accent1Color: blueGrey900
+        accent1Color: blueGrey900,
+        secondaryColor: blueGrey900
     },
     appBar: {
         color: white,
     }
-    // raisedButton: {
-    //     color: palette.alternateTextColor,
-    //     textColor: palette.textColor,
-    //     primaryColor: palette.primary1Color,
-    //     primaryTextColor: palette.alternateTextColor,
-    //     secondaryColor: palette.accent1Color,
-    //     secondaryTextColor: palette.alternateTextColor
-    // }
 });

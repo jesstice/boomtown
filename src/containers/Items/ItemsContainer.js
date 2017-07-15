@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import store from '../../redux/store';
-import * as actions from '../../redux/actions';
 
+import { getItems } from '../../redux/modules/items';
 import Items from './Items';
 import Loader from '../../components/Loader/';
 
 class ItemsContainer extends Component {
 
     componentDidMount() {
-        store.dispatch(actions.getItems());
+        this.props.dispatch(getItems());
     }
 
     render() {
@@ -20,9 +19,11 @@ class ItemsContainer extends Component {
 
 function mapStateToProps(state) {
     return {
-        loading: state.loading,
-        itemsData: state.itemsData
+        loading: state.itemsReducer.loading,
+        itemsData: state.itemsReducer.itemsData
     };
 }
+
+// proptype validation goes here
 
 export default connect(mapStateToProps)(ItemsContainer);

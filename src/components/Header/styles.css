@@ -1,0 +1,16 @@
+.header-logo {
+    height: 3rem;
+    width: auto;
+    margin: 0.5rem;
+}
+
+.appHeader div {
+  /*display: flex;
+  algin-content: center;
+  justify-content: space-between;*/
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
