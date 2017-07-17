@@ -47,17 +47,18 @@ export function getItems(userId) {
     };
 }
 
-export function loadFilterItems(itemsData) {
-    return {
-        type: LOAD_FILTER_ITEMS,
-        payload: itemsData
-    };
-}
 
 export function selectFilterItems(filterValues) {
     return {
         type: SELECT_FILTER_ITEMS,
         payload: filterValues
+    };
+}
+
+export function loadFilterItems(itemsData) {
+    return {
+        type: LOAD_FILTER_ITEMS,
+        payload: itemsData
     };
 }
 

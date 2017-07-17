@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
+import { selectFilterItems } from '../../redux/modules/items';
+
 // TO DO: import action creator to dispatch action onChange
 
 // const styles = {
@@ -25,7 +27,7 @@ const tags = [
 // TO DO: refactor to stateless
 class FilterList extends Component {
 
-    handleChange = (event, index, this.props.filterValues) => this.setState({ values });
+    handleChange = (event, index, filterValues) => this.props.dispatch(selectFilterItems(filterValues));
 
     menuItems(filterValues) {
         return tags.map((tag) => (
@@ -40,7 +42,7 @@ class FilterList extends Component {
     }
 
     render() {
-        const { filterValues } = this.props.filterValues;
+        const { filterValues } = this.props;
         return (
             <SelectField
                 multiple={true}
