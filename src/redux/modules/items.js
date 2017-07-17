@@ -2,23 +2,23 @@
 export const LOAD_ITEMS = 'LOAD_ITEMS';
 export const LOAD_FILTER_ITEMS = 'LOAD_FILTER_ITEMS';
 export const SELECT_FILTER_ITEMS = 'SELECT_FILTER_ITEMS';
-export const GET_BORROWED_ITEMS = 'GET_BORROWED_ITEMS';
+export const GET_BORROWED_DATA = 'GET_BORROWED_DATA';
 
 // ACTION CREATORS
-export function loadItems(itemsWithOwners, borrowedItems) {
+export function loadItems(itemsWithOwners, borrowedData) {
     return {
         type: LOAD_ITEMS,
         payload: {
             itemsWithOwners,
-            borrowedItems
+            borrowedData
         }
     };
 }
 
-export function getBorrowedItems(borrowedItems) {
+export function getborrowedData(borrowedData) {
     return {
-        type: GET_BORROWED_ITEMS,
-        payload: borrowedItems
+        type: GET_BORROWED_DATA,
+        payload: borrowedData
     };
 }
 
@@ -35,14 +35,14 @@ export function getItems(userId) {
                 item.borrower = borrowerName[0];
                 return item;
             });
-            let borrowedItems = items.map(item => {
+            let borrowedData = items.map(item => {
                 return item;
             });
             if (userId) {
                 itemsWithOwners = itemsWithOwners.filter(item => item.itemOwner.id === userId);
-                borrowedItems = borrowedItems.filter(item => item.borrower && item.borrower.id === userId);
+                borrowedData = borrowedData.filter(item => item.borrower && item.borrower.id === userId);
             }
-            dispatch(loadItems(itemsWithOwners, borrowedItems));
+            dispatch(loadItems(itemsWithOwners, borrowedData));
         });
     };
 }

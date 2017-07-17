@@ -11,22 +11,27 @@ import Gravatar from 'react-gravatar';
 
 import './styles.css';
 
-const ProfileCard = ({ userData, borrowedItems }) => (
-    <div className="profileCardWrapper">
-        <Card className="profileCard">
-            <CardTitle
-                className="userData"
-                title={userData.fullName}
-                subtitle={userData.bio}
-            />
-            <CardMedia className="userImage">
-                <Gravatar email={userData.email} default="monsterid" size={200} />
-            </CardMedia>
-            <CardText>
-                {borrowedItems}
-            </CardText>
-        </Card>
-    </div>
-);
+const ProfileCard = ({ userData, borrowedData, itemsData }) => {
 
+    return (
+        <div className="profileCardWrapper">
+            <Card className="profileCard">
+                <CardTitle
+                    className="userData"
+                    title={userData.fullName}
+                    subtitle={userData.bio}
+                />
+                <CardText>
+                    // To be continued...
+                </CardText>
+                <CardMedia className="userImage">
+                    <Gravatar email={userData.email} default="monsterid" size={200} />
+                </CardMedia>
+            </Card>
+        </div>
+    );
+
+}
+
+    
 export default ProfileCard;

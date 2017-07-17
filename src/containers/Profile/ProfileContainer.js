@@ -6,13 +6,6 @@ import { getUserData } from '../../redux/modules/profile';
 import Loader from '../../components/Loader/';
 import Profile from './Profile';
 
-const getBorrowedItems = (userData, itemsData) => {
-    if (itemsData) {
-        const borrowedItems = itemsData.filter(item => item.borrower.id === userData.id);
-        return borrowedItems.length;
-    }
-};
-
 class ProfileContainer extends Component {
 
     componentDidMount() {
