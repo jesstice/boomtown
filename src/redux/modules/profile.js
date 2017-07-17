@@ -20,7 +20,6 @@ export function getUserData(userId) {
 }
 
 // REDUCERS
-
 const initialState = {
     loading: true,
     userData: []

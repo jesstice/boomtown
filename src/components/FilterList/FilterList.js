@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
@@ -10,31 +12,52 @@ import MenuItem from 'material-ui/MenuItem';
 //     },
 // };
 
-// TO DO: refactor to stateless
-export default class FilterList extends Component {
-    state = {
-        value: null,
-    };
+const tags = [
+    'Electronics',
+    'Household Items',
+    'Musical Instruments',
+    'Physical Media',
+    'Recreational Equipment',
+    'Sporting Goods',
+    'Tools',
+];
 
-    handleChange = (event, index, value) => this.setState({ value });
+// TO DO: refactor to stateless
+class FilterList extends Component {
+
+    handleChange = (event, index, this.props.filterValues) => this.setState({ values });
+
+    menuItems(filterValues) {
+        return tags.map((tag) => (
+            <MenuItem
+                key={tag}
+                insetChildren={true}
+                checked={filterValues && filterValues.indexOf(tag) > -1}
+                value={tag}
+                primaryText={tag}
+            />
+        ));
+    }
 
     render() {
+        const { filterValues } = this.props.filterValues;
         return (
-            <div>
-                <SelectField
-                    floatingLabelText="Filter by Tag"
-                    value={this.state.value}
-                    onChange={this.handleChange} // TO DO: dispatch action to update store
-                >
-                    <MenuItem value={1} primaryText="Electronics" />
-                    <MenuItem value={2} primaryText="Household Items" />
-                    <MenuItem value={3} primaryText="Musical Instruments" />
-                    <MenuItem value={4} primaryText="Physical Media" />
-                    <MenuItem value={5} primaryText="Recreational Equipment" />
-                    <MenuItem value={6} primaryText="Sporting Goods" />
-                    <MenuItem value={7} primaryText="Tools" />
-                </SelectField>
-            </div>
+            <SelectField
+                multiple={true}
+                hintText="Filter by Tag"
+                value={filterValues}
+                onChange={this.handleChange}
+            >
+                {this.menuItems(filterValues)}
+            </SelectField>
         );
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        filterValues: state.itemsReducer.filterValues
+    };
+}
+
+export default connect(mapStateToProps)(FilterList);

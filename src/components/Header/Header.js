@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
-import FilterList from '../FilterList/FilterList';
+import FilterList from '../FilterList';
 
 import Logo from '../../images/boomtown-logo.svg';
 import './styles.css';
@@ -17,7 +17,7 @@ const Header = () => (
             <Link exact to="/">
                 <img className="header-logo" src={Logo} alt="logo" />
             </Link>}
-        title={<FilterList />}
+        title={<FilterList  />}
     >
         <div className="header-right">
             <RaisedButton label="My Profile" primary={true} style={style.profile} />

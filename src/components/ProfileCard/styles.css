@@ -1,20 +1,28 @@
-.itemCardWrapper {
+.profileCardWrapper {
     padding: 1%;
-    width: 100%;
+    width: 75%;
 }
 
-@media only screen and (min-width: 600px) {
-    .itemCardWrapper {
-        width: 50%;
-    }
+.profileCard {
+    padding: 10px;
 }
 
-@media only screen and (min-width: 960px) {
-    .itemCardWrapper {
-        width: 33%;
-    }
+.profileCard div {
+    padding: 0;
+    display: flex;
 }
 
-.react-gravatar {
+.userData {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 80%;
+}
+
+.userImage {
+    flex-basis: 20%;
+}
+
+.userImage .react-gravatar {
     border-radius: 50%;
+    height: 100%!important;
 }

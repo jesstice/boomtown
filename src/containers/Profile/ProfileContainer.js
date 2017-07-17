@@ -5,7 +5,13 @@ import { getItems } from '../../redux/modules/items';
 import { getUserData } from '../../redux/modules/profile';
 import Loader from '../../components/Loader/';
 import Profile from './Profile';
-import Items from '../Items';
+
+const getBorrowedItems = (userData, itemsData) => {
+    if (itemsData) {
+        const borrowedItems = itemsData.filter(item => item.borrower.id === userData.id);
+        return borrowedItems.length;
+    }
+};
 
 class ProfileContainer extends Component {
 
@@ -17,10 +23,7 @@ class ProfileContainer extends Component {
     render() {
         if (this.props.loading) return <Loader />;
         return (
-            <div>
-                <Profile userData={this.props.userData} />
-                <Items itemsData={this.props.itemsData} />
-            </div>
+            <Profile userData={this.props.userData} itemsData={this.props.itemsData} borrowedData={this.props.borrowedData} />
         );
     }
 }
@@ -29,7 +32,8 @@ function mapStateToProps(state) {
     return {
         loading: state.profileReducer.loading,
         userData: state.profileReducer.userData,
-        itemsData: state.itemsReducer.itemsData
+        itemsData: state.itemsReducer.itemsData,
+        borrowedData: state.itemsReducer.borrowedData
     };
 }
 
