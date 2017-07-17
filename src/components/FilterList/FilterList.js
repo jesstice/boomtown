@@ -6,13 +6,6 @@ import MenuItem from 'material-ui/MenuItem';
 
 import { selectFilterItems } from '../../redux/modules/items';
 
-// TO DO: import action creator to dispatch action onChange
-
-// const styles = {
-//     customWidth: {
-//         width: 150,
-//     },
-// };
 
 const tags = [
     'Electronics',

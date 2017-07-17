@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { getItems } from '../../redux/modules/items';
+import { getItems, filterItemsData } from '../../redux/modules/items';
 import Items from './Items';
 import Loader from '../../components/Loader/';
 
@@ -20,7 +20,8 @@ class ItemsContainer extends Component {
 function mapStateToProps(state) {
     return {
         loading: state.itemsReducer.loading,
-        itemsData: state.itemsReducer.itemsData
+        itemsData: state.itemsReducer.itemsData,
+        filterValues: state.itemsReducer.filterValues
     };
 }
 

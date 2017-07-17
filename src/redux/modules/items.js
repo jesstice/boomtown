@@ -1,6 +1,6 @@
 // ACTION CONSTANTS
 export const LOAD_ITEMS = 'LOAD_ITEMS';
-export const LOAD_FILTER_ITEMS = 'FILTER_ITEMS';
+export const LOAD_FILTER_ITEMS = 'LOAD_FILTER_ITEMS';
 export const SELECT_FILTER_ITEMS = 'SELECT_FILTER_ITEMS';
 export const GET_BORROWED_ITEMS = 'GET_BORROWED_ITEMS';
 
@@ -47,7 +47,6 @@ export function getItems(userId) {
     };
 }
 
-
 export function selectFilterItems(filterValues) {
     return {
         type: SELECT_FILTER_ITEMS,
@@ -55,16 +54,15 @@ export function selectFilterItems(filterValues) {
     };
 }
 
-export function loadFilterItems(itemsData) {
-    return {
-        type: LOAD_FILTER_ITEMS,
-        payload: itemsData
-    };
+export function filterItemsData(itemsData, filterValues) {
+    const filteredItems = itemsData.filter((itemData) => filterValues.filter(filterValue => itemData.tags === filterValue));
+    return filteredItems;
 }
 
-export function handleChange(event, index, filterValues) {
-    return function (dispatch) {
-        dispatch(selectFilterItems(filterValues));
+export function loadFilterItems(filteredItemsData) {
+    return {
+        type: LOAD_FILTER_ITEMS,
+        payload: filteredItemsData
     };
 }
 
@@ -73,6 +71,7 @@ export function handleChange(event, index, filterValues) {
 const initialState = {
     loading: true,
     itemsData: [],
+    filteredItemsData: [],
     filterValues: [],
     borrowedData: []
 };
@@ -93,6 +92,11 @@ export function itemsReducer(state = initialState, action) {
                 filterValues: action.payload
             };
             return filterState;
+        case LOAD_FILTER_ITEMS:
+            const filteredState = {
+                ...state,
+                filteredItemsData: action.payload
+            }
         default:
             return state;
     }
