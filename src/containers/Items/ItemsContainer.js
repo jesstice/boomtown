@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { getItems, filterItemsData } from '../../redux/modules/items';
 import Items from './Items';
@@ -25,6 +26,8 @@ function mapStateToProps(state) {
     };
 }
 
-// proptype validation goes here
+Items.propTypes = {
+    itemsData: PropTypes.array
+};
 
 export default connect(mapStateToProps)(ItemsContainer);

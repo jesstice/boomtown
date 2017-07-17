@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { getItems } from '../../redux/modules/items';
 import { getUserData } from '../../redux/modules/profile';
@@ -30,6 +31,8 @@ function mapStateToProps(state) {
     };
 }
 
-// TO DO: proptype validation goes here
+Profile.propTypes = {
+    userData: PropTypes.array
+};
 
 export default connect(mapStateToProps)(ProfileContainer);
