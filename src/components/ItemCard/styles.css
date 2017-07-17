@@ -18,3 +18,7 @@
 .react-gravatar {
     border-radius: 50%;
 }
+
+.card-media {
+    text-transform: uppercase;
+}

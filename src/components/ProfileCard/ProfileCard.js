@@ -19,10 +19,12 @@ const ProfileCard = ({ userData, borrowedData, itemsData }) => {
                 <CardTitle
                     className="userData"
                     title={userData.fullName}
+                    titleStyle={{fontSize: '2.5rem', marginBottom: '1rem'}}
                     subtitle={userData.bio}
+                    subtitleStyle={{fontSize: '1rem', marginBottom: '1rem'}}
                 />
                 <CardText>
-                    // To be continued...
+                    <p>Items Borrowed Coming Soon!</p>
                 </CardText>
                 <CardMedia className="userImage">
                     <Gravatar email={userData.email} default="monsterid" size={200} />

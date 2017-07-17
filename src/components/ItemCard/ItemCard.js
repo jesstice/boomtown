@@ -21,7 +21,8 @@ const ItemCard = ({ itemDetails }) => {
     return (
         <li className="itemCardWrapper">
             <Card>
-                <CardMedia 
+                <CardMedia
+                    className="card-media"
                     overlay={
                         (!itemDetails.available) ?
                             <CardTitle subtitle={`Lent to ${itemDetails.borrower.fullName}`} />
