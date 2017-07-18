@@ -13,14 +13,18 @@
     justify-content: space-between;
 }
 
-.listedItems {
-    color: rgba(38, 50, 56, 0.54);
-}
-
 .userData {
     display: flex;
     flex-direction: column;
     flex-basis: 50%;
+}
+
+.listedItems {
+    color: rgba(38, 50, 56, 0.54);
+}
+
+.numberOfItems {
+    font-size: 1.25rem;
 }
 
 .userItemsData {

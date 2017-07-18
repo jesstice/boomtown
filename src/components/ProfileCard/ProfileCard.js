@@ -32,9 +32,9 @@ const ProfileCard = ({ userData, borrowedData, itemsData }) => {
                 </CardTitle>
                 <CardText>
                     <ul className="userItemsData">
-                        <li>{itemsData.length}</li>
+                        <li className="numberOfItems">{itemsData.length}</li>
                         <li className="listedItems">Items Shared</li>
-                        <li>{borrowedData.length}</li>
+                        <li className="numberOfItems">{borrowedData.length}</li>
                         <li className="listedItems">Items Borrowed</li>
                     </ul>
                 </CardText>
