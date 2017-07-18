@@ -22,9 +22,21 @@ const ProfileCard = ({ userData, borrowedData, itemsData }) => {
                     titleStyle={{fontSize: '2.5rem', marginBottom: '1rem'}}
                     subtitle={userData.bio}
                     subtitleStyle={{fontSize: '1rem', marginBottom: '1rem'}}
-                />
+                >
+                    <ul>
+                        <h2>Currently Borrowing:</h2>
+                        {borrowedData.map((data) => (
+                            <li className="listedItems">{data.title} from {data.itemOwner.fullName}</li>
+                        ))}
+                    </ul>
+                </CardTitle>
                 <CardText>
-                    <p>Items Borrowed Coming Soon!</p>
+                    <ul className="userItemsData">
+                        <li>{itemsData.length}</li>
+                        <li className="listedItems">Items Shared</li>
+                        <li>{borrowedData.length}</li>
+                        <li className="listedItems">Items Borrowed</li>
+                    </ul>
                 </CardText>
                 <CardMedia className="userImage">
                     <Gravatar email={userData.email} default="monsterid" size={200} />
@@ -35,5 +47,5 @@ const ProfileCard = ({ userData, borrowedData, itemsData }) => {
 
 }
 
-    
+
 export default ProfileCard;

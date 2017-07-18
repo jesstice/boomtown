@@ -14,18 +14,22 @@ const style = {
     margin: 12
 };
 
+
 const Header = ({ dispatch, filterValues }) => (
+
     <AppBar
         iconElementLeft={
             <Link exact to="/">
                 <img className="header-logo" src={Logo} alt="logo" />
             </Link>}
         title={
-            <FilterList
-                dispatch={dispatch}
-                handleChange={selectFilterItems}
-                filterValues={filterValues}
-            />}
+            (window.location.pathname !== '/') ?
+                <FilterList
+                    dispatch={dispatch}
+                    handleChange={selectFilterItems}
+                    filterValues={filterValues}
+                /> : null
+        }
     >
         <div className="header-right">
             <RaisedButton label="My Profile" primary={true} style={style.profile} />

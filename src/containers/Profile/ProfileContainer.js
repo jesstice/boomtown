@@ -17,7 +17,11 @@ class ProfileContainer extends Component {
     render() {
         if (this.props.loading) return <Loader />;
         return (
-            <Profile userData={this.props.userData} itemsData={this.props.itemsData} borrowedData={this.props.borrowedData} />
+            <Profile
+                itemsData={this.props.itemsData}
+                userData={this.props.userData}
+                borrowedData={this.props.borrowedData}
+            />
         );
     }
 }
