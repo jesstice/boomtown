@@ -1,58 +1,80 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
-import { selectFilterItems } from '../../redux/modules/items';
 
+const FilterList = ({ dispatch, filterValues, handleChange }) => {
+    const tags = [
+        'Electronics',
+        'Household Items',
+        'Musical Instruments',
+        'Physical Media',
+        'Recreational Equipment',
+        'Sporting Goods',
+        'Tools',
+    ];
 
-const tags = [
-    'Electronics',
-    'Household Items',
-    'Musical Instruments',
-    'Physical Media',
-    'Recreational Equipment',
-    'Sporting Goods',
-    'Tools',
-];
+    return (
+        <SelectField
+            multiple={true}
+            hintText="Filter by Tag"
+            value={filterValues}
+            onChange={(event, index, value) => dispatch(handleChange(value))}
+        >
+            {tags.map((tag) => (
+                <MenuItem
+                    key={tag}
+                    insetChildren={true}
+                    checked={filterValues && filterValues.includes(tag)}
+                    value={tag}
+                    primaryText={tag}
+                />
+            ))}
+        </SelectField>
+    );
+};
 
-// TO DO: refactor to stateless
-class FilterList extends Component {
+// class FilterList extends Component {
 
-    handleChange = (event, index, filterValues) => this.props.dispatch(selectFilterItems(filterValues));
+//     handleChange = (event, index, filterValues) => this.props.dispatch(selectFilterItems(filterValues));
 
-    menuItems(filterValues) {
-        return tags.map((tag) => (
-            <MenuItem
-                key={tag}
-                insetChildren={true}
-                checked={filterValues && filterValues.indexOf(tag) > -1}
-                value={tag}
-                primaryText={tag}
-            />
-        ));
-    }
+//     // add selectValues as prop
 
-    render() {
-        const { filterValues } = this.props;
-        return (
-            <SelectField
-                multiple={true}
-                hintText="Filter by Tag"
-                value={filterValues}
-                onChange={this.handleChange}
-            >
-                {this.menuItems(filterValues)}
-            </SelectField>
-        );
-    }
-}
+//     // handleChange = (event, index, values) => dispatch(onChangeAction(values, selectValues, change));
 
-function mapStateToProps(state) {
-    return {
-        filterValues: state.itemsReducer.filterValues
-    };
-}
+//     menuItems(filterValues) {
+//         return tags.map((tag) => (
+//             <MenuItem
+//                 key={tag}
+//                 insetChildren={true}
+//                 checked={filterValues && filterValues.includes(tag)}
+//                 value={tag}
+//                 primaryText={tag}
+//             />
+//         ));
+//     }
 
-export default connect(mapStateToProps)(FilterList);
+//     render() {
+//         const { filterValues } = this.props;
+//         return (
+//             <SelectField
+//                 multiple={true}
+//                 hintText="Filter by Tag"
+//                 value={filterValues}
+//                 onChange={this.handleChange}
+//             >
+//                 {/*move menu items here*/}
+//                 {this.menuItems(filterValues)}
+//             </SelectField>
+//         );
+//     }
+// }
+
+// function mapStateToProps(state) {
+//     return {
+//         filterValues: state.itemsReducer.filterValues
+//     };
+// }
+
+export default FilterList;

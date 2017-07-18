@@ -54,24 +54,24 @@ export function selectFilterItems(filterValues) {
     };
 }
 
-export function filterItemsData(itemsData, filterValues) {
-    const filteredItems = itemsData.filter((itemData) => filterValues.filter(filterValue => itemData.tags === filterValue));
-    return filteredItems;
-}
+// export function filterItemsData(itemsData, filterValues) {
+//     const filteredItems = itemsData.filter((itemData) => filterValues.filter(filterValue => itemData.tags === filterValue));
+//     return filteredItems;
+// }
 
-export function loadFilterItems(filteredItemsData) {
-    return {
-        type: LOAD_FILTER_ITEMS,
-        payload: filteredItemsData
-    };
-}
+// export function loadFilterItems(filteredItemsData) {
+//     return {
+//         type: LOAD_FILTER_ITEMS,
+//         payload: filteredItemsData
+//     };
+// }
 
 // REDUCERS
 
 const initialState = {
     loading: true,
     itemsData: [],
-    filteredItemsData: [],
+    // filteredItemsData: [],
     filterValues: [],
     borrowedData: []
 };
@@ -92,11 +92,11 @@ export function itemsReducer(state = initialState, action) {
                 filterValues: action.payload
             };
             return filterState;
-        case LOAD_FILTER_ITEMS:
-            const filteredState = {
-                ...state,
-                filteredItemsData: action.payload
-            }
+        // case LOAD_FILTER_ITEMS:
+        //     const filteredState = {
+        //         ...state,
+        //         filteredItemsData: action.payload
+        //     };
         default:
             return state;
     }
