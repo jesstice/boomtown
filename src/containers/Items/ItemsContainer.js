@@ -40,8 +40,9 @@ function mapStateToProps(state) {
     };
 }
 
-Items.propTypes = {
-    itemsData: PropTypes.array
+ItemsContainer.propTypes = {
+    itemsData: PropTypes.array,
+    filterValues: PropTypes.array
 };
 
 export default connect(mapStateToProps)(ItemsContainer);

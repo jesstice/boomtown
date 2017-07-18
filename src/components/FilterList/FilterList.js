@@ -35,46 +35,4 @@ const FilterList = ({ dispatch, filterValues, handleChange }) => {
     );
 };
 
-// class FilterList extends Component {
-
-//     handleChange = (event, index, filterValues) => this.props.dispatch(selectFilterItems(filterValues));
-
-//     // add selectValues as prop
-
-//     // handleChange = (event, index, values) => dispatch(onChangeAction(values, selectValues, change));
-
-//     menuItems(filterValues) {
-//         return tags.map((tag) => (
-//             <MenuItem
-//                 key={tag}
-//                 insetChildren={true}
-//                 checked={filterValues && filterValues.includes(tag)}
-//                 value={tag}
-//                 primaryText={tag}
-//             />
-//         ));
-//     }
-
-//     render() {
-//         const { filterValues } = this.props;
-//         return (
-//             <SelectField
-//                 multiple={true}
-//                 hintText="Filter by Tag"
-//                 value={filterValues}
-//                 onChange={this.handleChange}
-//             >
-//                 {/*move menu items here*/}
-//                 {this.menuItems(filterValues)}
-//             </SelectField>
-//         );
-//     }
-// }
-
-// function mapStateToProps(state) {
-//     return {
-//         filterValues: state.itemsReducer.filterValues
-//     };
-// }
-
 export default FilterList;

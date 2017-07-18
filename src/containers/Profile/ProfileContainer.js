@@ -32,7 +32,9 @@ function mapStateToProps(state) {
 }
 
 Profile.propTypes = {
-    userData: PropTypes.array
+    itemsData: PropTypes.array,
+    userData: PropTypes.array,
+    borrowedData: PropTypes.array
 };
 
 export default connect(mapStateToProps)(ProfileContainer);

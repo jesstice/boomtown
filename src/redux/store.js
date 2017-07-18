@@ -5,9 +5,6 @@ import thunk from 'redux-thunk';
 
 import reducers from './combineReducers';
 
-// array with filter keys
-
-
 export default createStore(
   reducers,
   composeWithDevTools(
