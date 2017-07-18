@@ -16,8 +16,8 @@ class ItemsContainer extends Component {
         const { itemsData } = this.props;
 
         if (filterValues.length) {
-            itemsData.filter((itemData) => filterValues.find(filterValue => itemData.tags === filterValue));
-            // filter items based on tags find()
+            return itemsData.filter((itemData) => itemData.tags.find(tag => filterValues.includes(tag))
+            );
         }
 
         return itemsData;
