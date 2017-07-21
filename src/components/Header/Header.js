@@ -23,12 +23,11 @@ const Header = ({ dispatch, filterValues }) => (
                 <img className="header-logo" src={Logo} alt="logo" />
             </Link>}
         title={
-            (window.location.pathname !== '/') ?
                 <FilterList
                     dispatch={dispatch}
                     handleChange={selectFilterItems}
                     filterValues={filterValues}
-                /> : null
+                />
         }
     >
         <div className="header-right">

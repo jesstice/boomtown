@@ -11,7 +11,7 @@ import Gravatar from 'react-gravatar';
 
 import './styles.css';
 
-const ProfileCard = ({ userData, borrowedData, itemsData }) => {
+const ProfileCard = ({ userData }) => {
 
     return (
         <div className="profileCardWrapper">
@@ -25,16 +25,16 @@ const ProfileCard = ({ userData, borrowedData, itemsData }) => {
                 >
                     <ul>
                         <h2>Currently Borrowing:</h2>
-                        {borrowedData.map((data) => (
+                        {userData.borrowed.map((data) => (
                             <li className="listedItems">{data.title} from {data.itemOwner.fullName}</li>
                         ))}
                     </ul>
                 </CardTitle>
                 <CardText>
                     <ul className="userItemsData">
-                        <li className="numberOfItems">{itemsData.length}</li>
+                        <li className="numberOfItems">{userData.items.length}</li>
                         <li className="listedItems">Items Shared</li>
-                        <li className="numberOfItems">{borrowedData.length}</li>
+                        <li className="numberOfItems">{userData.borrowed.length}</li>
                         <li className="listedItems">Items Borrowed</li>
                     </ul>
                 </CardText>

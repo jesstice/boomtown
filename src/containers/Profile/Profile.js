@@ -5,9 +5,9 @@ import ItemCardList from '../../components/ItemCardList/';
 
 import './styles.css';
 
-const Profile = ({ userData, itemsData, borrowedData }) => (
+const Profile = ({ userData, itemsData }) => (
     <div className="profileWrapper">
-        <ProfileCard userData={userData} borrowedData={borrowedData} itemsData={itemsData} />
+        <ProfileCard userData={userData} />
         <ItemCardList itemsData={itemsData} />
     </div>
 );

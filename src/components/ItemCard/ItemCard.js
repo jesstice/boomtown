@@ -14,9 +14,7 @@ import * as moment from 'moment';
 import './styles.css';
 
 const ItemCard = ({ itemDetails }) => {
-
     let tags = itemDetails.tags.join(', ');
-    const fakeId = 'LAi9TYWxgGhbjgHu1Sm6ZvB1tRP2';
 
     return (
         <li className="itemCardWrapper">
@@ -24,7 +22,7 @@ const ItemCard = ({ itemDetails }) => {
                 <CardMedia
                     className="card-media"
                     overlay={
-                        (!itemDetails.available) ?
+                        (itemDetails.borrower) ?
                             <CardTitle subtitle={`Lent to ${itemDetails.borrower.fullName}`} />
                         : null
                     }
