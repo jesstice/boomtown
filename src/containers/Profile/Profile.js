@@ -5,10 +5,10 @@ import ItemCardList from '../../components/ItemCardList/';
 
 import './styles.css';
 
-const Profile = ({ userData, itemsData }) => (
+const Profile = ({ userData }) => (
     <div className="profileWrapper">
         <ProfileCard userData={userData} />
-        <ItemCardList itemsData={itemsData} />
+        <ItemCardList itemsData={userData.items} />
     </div>
 );
 

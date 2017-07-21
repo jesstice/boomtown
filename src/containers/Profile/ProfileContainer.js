@@ -33,20 +33,23 @@ const fetchUserData = gql`
                 }
             }
             items {
-                id
+                title
+                itemOwner {
+                    id
+                    fullName
+                    email
+                }
+                imageUrl
+                borrower {
+                    fullName
+                }
+                createdOn
+                description
+                tags
             }
         }
     }
 `;
-
-// function mapStateToProps(state) {
-//     return {
-//         loading: state.profileReducer.loading
-//         // userData: state.profileReducer.userData,
-//         // itemsData: state.itemsReducer.itemsData,
-//         // borrowedData: state.itemsReducer.borrowedData
-//     };
-// }
 
 Profile.propTypes = {
     userData: PropTypes.array
