@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
@@ -13,9 +12,7 @@ class ProfileContainer extends Component {
         const { data: { loading, user } } = this.props;
         if (loading) return <Loader />;
         return (
-            <Profile
-               userData={user}
-            />
+            <Profile userData={user} />
         );
     }
 }
@@ -51,11 +48,13 @@ const fetchUserData = gql`
     }
 `;
 
-Profile.propTypes = {
-    userData: PropTypes.array
+ProfileContainer.propTypes = {
+    data: PropTypes.shape({
+        loading: PropTypes.bool.isRequired,
+        userData: PropTypes.object,
+    }).isRequired,
 };
 
 export default graphql(fetchUserData, {
     options: (props) => ({ variables: { id: props.match.params.id } })
 })(ProfileContainer);
-// export default connect(mapStateToProps)(userDataList);

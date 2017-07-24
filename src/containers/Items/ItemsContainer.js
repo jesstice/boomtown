@@ -54,7 +54,10 @@ function mapStateToProps(state) {
 }
 
 ItemsContainer.propTypes = {
-    itemsData: PropTypes.array,
+    data: PropTypes.shape({
+        loading: PropTypes.bool.isRequired,
+        itemsData: PropTypes.object,
+    }).isRequired,
     filterValues: PropTypes.array
 };
 

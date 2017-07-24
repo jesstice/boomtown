@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { Link } from 'react-router-dom';
@@ -42,5 +43,10 @@ function mapStateToProps(state) {
         filterValues: state.itemsReducer.filterValues
     };
 }
+
+Header.propTypes = {
+    filterValues: PropTypes.array,
+    dispatch: PropTypes.func
+};
 
 export default connect(mapStateToProps)(Header);

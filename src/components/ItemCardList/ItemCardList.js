@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Masonry from 'react-masonry-component';
 
 import ItemCard from '../../components/ItemCard/';
@@ -11,15 +12,19 @@ const masonryOptions = {
 const ItemCardList = ({ itemsData }) => {
     return (
         <Masonry
-        className="itemCardListWrapper"
-        elementType={'ul'}
-        options={masonryOptions}
+            className="itemCardListWrapper"
+            elementType={'ul'}
+            options={masonryOptions}
         >
             { itemsData && itemsData.map(itemData => (
                 <ItemCard key={itemData.id} itemDetails={itemData} />
             ))}
         </Masonry>
     );
+};
+
+ItemCardList.propTypes = {
+    itemsData: PropTypes.array
 };
 
 export default ItemCardList;

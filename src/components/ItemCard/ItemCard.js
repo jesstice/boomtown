@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { Link } from 'react-router-dom';
 
 import {
@@ -6,8 +8,10 @@ import {
     CardHeader,
     CardMedia,
     CardTitle,
-    CardText
+    CardText,
+    CardActions
 } from 'material-ui/Card';
+import RaisedButton from 'material-ui/RaisedButton';
 import Gravatar from 'react-gravatar';
 import * as moment from 'moment';
 
@@ -40,9 +44,16 @@ const ItemCard = ({ itemDetails }) => {
                 </Link>
                 <CardTitle title={itemDetails.title} subtitle={tags} />
                 <CardText>{itemDetails.description}</CardText>
+                <CardActions>
+                    <RaisedButton label="Borrow" secondary={true} />
+                </CardActions>
             </Card>
         </li>
     );
+};
+
+ItemCard.propTypes = {
+    itemDetails: PropTypes.array
 };
 
 export default ItemCard;
