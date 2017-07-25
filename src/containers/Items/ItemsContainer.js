@@ -9,7 +9,7 @@ import Loader from '../../components/Loader/';
 
 class ItemsContainer extends Component {
 
-    filterItemsList(filterValues, items) {
+    filterItemsList = (filterValues, items) => {
         if (filterValues.length) {
             return items.filter((itemData) => itemData.tags.find(tag => filterValues.includes(tag))
             );
@@ -49,7 +49,7 @@ const fetchItemsData = gql`
 
 function mapStateToProps(state) {
     return {
-        filterValues: state.itemsReducer.filterValues
+        filterValues: state.items.filterValues
     };
 }
 

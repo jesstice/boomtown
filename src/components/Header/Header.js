@@ -40,7 +40,7 @@ const Header = ({ dispatch, filterValues }) => (
 
 function mapStateToProps(state) {
     return {
-        filterValues: state.itemsReducer.filterValues
+        filterValues: state.items.filterValues
     };
 }
 

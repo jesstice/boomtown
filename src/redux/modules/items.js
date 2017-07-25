@@ -16,11 +16,7 @@ const initialState = {
 export function itemsReducer(state = initialState, action) {
     switch (action.type) {
         case SELECT_FILTER_ITEMS:
-            const filterState = {
-                ...state,
-                filterValues: action.payload
-            };
-            return filterState;
+            return { ...state, filterValues: action.payload };
         default:
             return state;
     }
