@@ -22,7 +22,6 @@ class LoginContainer extends Component {
             }
             // var errorCode = error.code;
             // var errorMessage = error.message;
-
         });
     }
 
@@ -50,6 +49,6 @@ const mapStateToProps = state => ({
     authenticated: state.auth.userLoggedIn
 });
 
-this.authenticated.propTypes = PropTypes.bool.isRequired;
+// this.props.authenticated.propTypes = PropTypes.bool.isRequired;
 
 export default connect(mapStateToProps)(LoginContainer);
