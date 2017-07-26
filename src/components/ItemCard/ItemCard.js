@@ -27,7 +27,7 @@ const ItemCard = ({ itemDetails }) => {
                     className="card-media"
                     overlay={
                         (itemDetails.borrower) ?
-                            <CardTitle subtitle={`Lent to ${itemDetails.borrower.fullName}`} />
+                            <CardTitle subtitle={`Lent to ${itemDetails.borrower.fullname}`} />
                         : null
                     }
                 >
@@ -35,7 +35,7 @@ const ItemCard = ({ itemDetails }) => {
                 </CardMedia>
                 <Link to={`/profile/${itemDetails.itemOwner.id}`}>
                     <CardHeader
-                        title={itemDetails.itemOwner.fullName}
+                        title={itemDetails.itemOwner.fullname}
                         subtitle={moment.unix(itemDetails.createdOn).fromNow()}
                         avatar={
                             <Gravatar email={itemDetails.itemOwner.email} default="monsterid" />

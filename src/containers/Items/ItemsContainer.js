@@ -33,12 +33,11 @@ const fetchItemsData = gql`
             title
             itemOwner {
                 id
-                fullName
-                email
+                fullname
             }
             imageUrl
             borrower {
-                fullName
+                fullname
             }
             createdOn
             description

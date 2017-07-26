@@ -17,7 +17,7 @@ const ProfileCard = ({ userData }) => (
         <Card className="profileCard">
             <CardTitle
                 className="userData"
-                title={userData.fullName}
+                title={userData.fullname}
                 titleStyle={{ fontSize: '2.5rem', marginBottom: '1rem' }}
                 subtitle={userData.bio}
                 subtitleStyle={{ fontSize: '1rem', marginBottom: '1rem' }}
@@ -25,7 +25,7 @@ const ProfileCard = ({ userData }) => (
                 <ul>
                     <h2>Currently Borrowing:</h2>
                     {userData.borrowed.map((data) => (
-                        <li className="listedItems">{data.title} from {data.itemOwner.fullName}</li>
+                        <li className="listedItems">{data.title} from {data.itemOwner.fullname}</li>
                     ))}
                 </ul>
             </CardTitle>

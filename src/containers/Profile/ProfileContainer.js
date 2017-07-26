@@ -20,25 +20,25 @@ class ProfileContainer extends Component {
 const fetchUserData = gql`
     query fetchUserData($id: ID!) {
         user(id: $id) {
-            fullName
+            fullname
             bio
             email
             borrowed {
                 title
                 itemOwner {
-                    fullName
+                    fullname
                 }
             }
             items {
                 title
                 itemOwner {
                     id
-                    fullName
+                    fullname
                     email
                 }
                 imageUrl
                 borrower {
-                    fullName
+                    fullname
                 }
                 createdOn
                 description
