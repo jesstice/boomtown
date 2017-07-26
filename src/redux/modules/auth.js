@@ -5,20 +5,21 @@ export const UPDATE_AUTH_STATE = 'UPDATE_AUTH_STATE';
 
 export function showSignupForm() {
     return {
-        type: SHOW_SIGNUP_FORM
-    };
+        type: SHOW_SIGNUP_FORM,
+        payload: true
+    }
 }
 
-export function updateAuthState(value) {
+export function updateAuthState(userid) {
     return {
         type: UPDATE_AUTH_STATE,
-        payload: value
+        payload: userid
     };
 }
 
 // REDUCERS
 const initialState = {
-    userLoggedIn: false,
+    userProfile: false,
     loginError: false,
     signupForm: false
 };
@@ -26,7 +27,7 @@ const initialState = {
 export function authReducer(state = initialState, action) {
     switch (action.type) {
         case UPDATE_AUTH_STATE:
-            return { ...state, userLoggedIn: action.payload };
+            return { ...state, userProfile: action.payload };
         case SHOW_SIGNUP_FORM:
             return { ...state, signupForm: action.payload };
         case SHOW_LOGIN_ERROR:

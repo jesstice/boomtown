@@ -12,17 +12,21 @@ class LoginContainer extends Component {
     };
 
     login = ({ email, password }) => {
-
+        // To do: add to thunk
         FirebaseAuth.signInWithEmailAndPassword(email, password).catch((error) => {
             if (error.code === 'auth/user-not-found') {
                 // user does not exist and must sign up
-                // dispatch action to sign user up
+                // direct to <SignupForm />
             } else {
                 // there was an error, show a message
             }
             // var errorCode = error.code;
             // var errorMessage = error.message;
         });
+    }
+
+    join = () => {
+        // To do: connect form with graphql
     }
 
     render() {
@@ -34,21 +38,21 @@ class LoginContainer extends Component {
             );
         }
 
-        this.login({
-            email: 'cooluser@test.com',
-            password: 'cooluser'
-        });
-
         return (
-            <Login login={this.login} />
+            <Login login={(e) => {
+                e.preventDefault();
+                this.login({
+                    email: 'cooluser@test.com',
+                    password: 'cooluser' }); }}
+            />
         );
     }
 }
 
 const mapStateToProps = state => ({
-    authenticated: state.auth.userLoggedIn
+    authenticated: state.auth.userProfile
 });
 
-// this.props.authenticated.propTypes = PropTypes.bool.isRequired;
+// To do: this.props.authenticated.propTypes = PropTypes.bool.isRequired;
 
 export default connect(mapStateToProps)(LoginContainer);

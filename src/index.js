@@ -21,7 +21,7 @@ injectTapEventPlugin();
 // TO DO:
 FirebaseAuth.onAuthStateChanged(function(user) {
     if (user) {
-        store.dispatch(updateAuthState(true));
+        store.dispatch(updateAuthState(user.uid));
         // User is signed in.
         // var displayName = user.displayName;
         // var email = user.email;
