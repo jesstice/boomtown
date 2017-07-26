@@ -1,0 +1,26 @@
+.signup {
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+}
+
+.signup .cardContainer {
+    /* width: 420px; */
+    max-width: 95%;
+    min-width: 320px;
+}
+
+.signup form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.signup .formContainer {
+    padding: 1rem 4rem 3.25rem 4rem;
+}
+
+.signup .submitButton {
+    min-width: 30%;
+    margin: 2.25rem 0 0 0;
+}
