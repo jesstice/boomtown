@@ -8,6 +8,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 import FilterList from '../FilterList';
 import { selectFilterItems } from '../../redux/modules/items';
 
+import { FirebaseAuth } from '../../config/firebase';
+
 import Logo from '../../images/boomtown-logo.svg';
 import './styles.css';
 
@@ -32,8 +34,17 @@ const Header = ({ dispatch, filterValues }) => (
         }
     >
         <div className="header-right">
-            <RaisedButton label="My Profile" primary={true} style={style.profile} />
-            <RaisedButton label="Logout" secondary={true} style={style} />
+            <RaisedButton
+                label="My Profile"
+                primary={true}
+                style={style.profile}
+            />
+            <RaisedButton
+                onTouchTap={() => FirebaseAuth.signOut()}
+                label="Logout"
+                secondary={true}
+                style={style}
+            />
         </div>
     </AppBar>
 );
