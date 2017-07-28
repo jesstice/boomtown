@@ -25,6 +25,8 @@ Layout.defaultProps = {
     children: null
 };
 
+// TO DO: mapStateToProps
+
 Layout.propTypes = {
     children: PropTypes.node
 };

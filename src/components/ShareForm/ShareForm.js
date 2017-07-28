@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// import ShareForm from '../../components/ShareForm/';
-
 import {
   Step,
   Stepper,
@@ -10,31 +8,33 @@ import {
   StepContent,
 } from 'material-ui/Stepper';
 import RaisedButton from 'material-ui/RaisedButton';
-import TextField from 'material-ui/TextField';
-import './styles.css';
+// import FlatButton from 'material-ui/FlatButton';
 
-const Share = ({ stepIndex, renderStepActions, handleImageUpload, selectImage, handleSubmit }) => {
+import './style.css';
+
+const ShareForm = ({ stepIndex, renderStepActions, handleImageUpload, selectImage, handleSubmit }) => {
     let uploadInput = false;
 
     return (
         <div style={{ maxWidth: 380, maxHeight: 400, margin: 'auto' }}>
             <form onSubmit={handleSubmit}>
+                <RaisedButton
+                    label="Select an image"
+                    onClick={() => selectImage(uploadInput)}
+                />
+                <input
+                    onChange={handleImageUpload}
+                    ref={(input) => { uploadInput = input; }}
+                    hidden
+                    type="file"
+                    d="input"
+                />
                 <Stepper activeStep={stepIndex} orientation="vertical">
                     <Step>
                         <StepLabel>Add an image</StepLabel>
                         <StepContent>
                             <p>We live in a visual culture. Upload an image of the item you are sharing.</p>
-                            <RaisedButton
-                                label="Select an image"
-                                onClick={() => selectImage(uploadInput)}
-                            />
-                            <input
-                                onChange={handleImageUpload}
-                                ref={(input) => { uploadInput = input; }}
-                                hidden
-                                type="file"
-                                d="input"
-                            />
+                            {/* Insert input button here */}
                             {renderStepActions(0)}
                         </StepContent>
                     </Step>
@@ -42,7 +42,6 @@ const Share = ({ stepIndex, renderStepActions, handleImageUpload, selectImage, h
                         <StepLabel>Add a Title and Description.</StepLabel>
                         <StepContent>
                             <p>Describe the item to entice borrowers.</p>
-                            <TextField hintText="Item description" />
                             {renderStepActions(1)}
                         </StepContent>
                     </Step>
@@ -54,7 +53,7 @@ const Share = ({ stepIndex, renderStepActions, handleImageUpload, selectImage, h
                         </StepContent>
                     </Step>
                     <Step>
-                        <StepLabel>Confirm your thang!</StepLabel>
+                        <StepLabel>Confirm your things!</StepLabel>
                         <StepContent>
                             <p>Is it all ready to share?</p>
                             {renderStepActions(3)}
@@ -77,7 +76,4 @@ const Share = ({ stepIndex, renderStepActions, handleImageUpload, selectImage, h
     );
 };
 
-
-// To Do: Prop types go here...
-
-export default Share;
+export default ShareForm;
