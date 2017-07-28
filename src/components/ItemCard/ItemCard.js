@@ -18,7 +18,8 @@ import * as moment from 'moment';
 import './styles.css';
 
 const ItemCard = ({ itemDetails }) => {
-    let tags = itemDetails.tags.join(', ');
+    let tags = itemDetails.tags.map(tag => tag.title).join(', ');
+    // TO DO: format tags as it's an array of objects itemDetails.tags.map(tag => tag.title).join(', ')
 
     return (
         <li className="itemCardWrapper">
@@ -31,14 +32,14 @@ const ItemCard = ({ itemDetails }) => {
                         : null
                     }
                 >
-                    <img src={itemDetails.imageUrl} alt={itemDetails.title} />
+                    <img src={itemDetails.imageurl} alt={itemDetails.title} />
                 </CardMedia>
-                <Link to={`/profile/${itemDetails.itemOwner.id}`}>
+                <Link to={`/profile/${itemDetails.itemowner.id}`}>
                     <CardHeader
-                        title={itemDetails.itemOwner.fullname}
-                        subtitle={moment.unix(itemDetails.createdOn).fromNow()}
+                        title={itemDetails.itemowner.fullname}
+                        subtitle={moment(itemDetails.createdon, 'YYYYMMDD').fromNow()}
                         avatar={
-                            <Gravatar email={itemDetails.itemOwner.email} default="monsterid" />
+                            <Gravatar email={itemDetails.itemowner.email} default="monsterid" />
                         }
                     />
                 </Link>
