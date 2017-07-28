@@ -37,7 +37,6 @@ const Header = ({ dispatch, filterValues, authenticated }) => (
             <RaisedButton
                 label="My Profile"
                 containerElement={<Link to={`/profile/${authenticated}`} />}
-                linkButton={true}
                 primary={true}
                 style={style.profile}
             />
