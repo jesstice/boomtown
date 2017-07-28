@@ -31,17 +31,20 @@ const fetchItemsData = gql`
     query fetchItemsData {
         items {
             title
-            itemOwner {
+            itemowner {
                 id
                 fullname
+                email
             }
-            imageUrl
+            imageurl
             borrower {
                 fullname
             }
-            createdOn
+            createdon
             description
-            tags
+            tags {
+                title
+            }
         }
     }
 `;

@@ -25,7 +25,7 @@ const ProfileCard = ({ userData }) => (
                 <ul>
                     <h2>Currently Borrowing:</h2>
                     {userData.borrowed.map((data) => (
-                        <li className="listedItems">{data.title} from {data.itemOwner.fullname}</li>
+                        <li className="listedItems">{data.title} from {data.itemowner.fullname}</li>
                     ))}
                 </ul>
             </CardTitle>

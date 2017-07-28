@@ -25,24 +25,26 @@ const fetchUserData = gql`
             email
             borrowed {
                 title
-                itemOwner {
+                itemowner {
                     fullname
                 }
             }
             items {
                 title
-                itemOwner {
+                itemowner {
                     id
                     fullname
                     email
                 }
-                imageUrl
+                imageurl
                 borrower {
                     fullname
                 }
-                createdOn
+                createdon
                 description
-                tags
+                tags {
+                    title
+                }
             }
         }
     }
