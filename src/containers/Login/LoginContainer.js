@@ -30,11 +30,12 @@ class LoginContainer extends Component {
     }
 
     render() {
+        const { from } = this.props.location.state || { from: { pathname: '/' } };
         const { authenticated } = this.props;
 
         if (authenticated) {
             return (
-                <Redirect to={'/'} />
+                <Redirect to={from} />
             );
         }
 
@@ -42,8 +43,8 @@ class LoginContainer extends Component {
             <Login login={(e) => {
                 e.preventDefault();
                 this.login({
-                    email: 'cooluser@test.com',
-                    password: 'cooluser' }); }}
+                    email: 'mackenzie@redacademy.com',
+                    password: 'mackenzie' }); }}
             />
         );
     }
@@ -53,6 +54,8 @@ const mapStateToProps = state => ({
     authenticated: state.auth.userProfile
 });
 
-// To do: this.props.authenticated.propTypes = PropTypes.bool.isRequired;
+// To do:
+// this.props.authenticated.propTypes = PropTypes.bool.isRequired;
+// location.state.propTypes
 
 export default connect(mapStateToProps)(LoginContainer);
