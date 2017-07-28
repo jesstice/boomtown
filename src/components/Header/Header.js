@@ -18,7 +18,7 @@ const style = {
 };
 
 
-const Header = ({ dispatch, filterValues }) => (
+const Header = ({ dispatch, filterValues, authenticated }) => (
 
     <AppBar
         iconElementLeft={
@@ -36,12 +36,14 @@ const Header = ({ dispatch, filterValues }) => (
         <div className="header-right">
             <RaisedButton
                 label="My Profile"
+                containerElement={<Link to={`/profile/${authenticated}`} />}
+                linkButton={true}
                 primary={true}
                 style={style.profile}
             />
             <RaisedButton
-                onTouchTap={() => FirebaseAuth.signOut()}
                 label="Logout"
+                onTouchTap={() => FirebaseAuth.signOut()}
                 secondary={true}
                 style={style}
             />
@@ -51,7 +53,8 @@ const Header = ({ dispatch, filterValues }) => (
 
 function mapStateToProps(state) {
     return {
-        filterValues: state.items.filterValues
+        filterValues: state.items.filterValues,
+        authenticated: state.auth.userProfile
     };
 }
 
