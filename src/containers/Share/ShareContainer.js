@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { gql, graphql } from 'react-apollo';
 
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import { FirebaseStorage, FirebaseAuth } from '../../config/firebase';
-import { updateStepIndex } from '../../redux/modules/share';
+import { updateStepIndex, setItemImageUrl } from '../../redux/modules/share';
 
 import Share from './Share';
 
@@ -39,10 +40,26 @@ class ShareContainer extends Component {
             .put(this.fileInput.files[0])
             .then(result => {
                 console.log(result);
-                // this.props.dispatch(setItemImageUrl(result.metadata.downloadURLs[0]));
+                this.props.dispatch(setItemImageUrl(result.metadata.downloadURLs[0]));
                 this.handleNext();
             });
     }
+
+    handleSubmit = (values) => {
+        this.props.mutate({
+            variables: {
+                title: 'this.props.values.title',
+                itemowner: 'this.props.authenticated',
+                description: 'this.props.values.description',
+            }
+        })
+        .then(({ data }) => {
+            console.log('got data', data);
+        }).catch((error) => {
+            console.log('there was an error sending the query', error);
+        });
+    };
+
 
     // To do: Add state and connect to presentational component
     renderStepActions = (step) => {
@@ -80,17 +97,44 @@ class ShareContainer extends Component {
                 renderStepActions={this.renderStepActions}
                 handleImageUpload={this.handleImageUpload}
                 selectImage={this.selectImage}
+                handleSubmit={() => this.handleSubmit}
             />
         );
     }
 }
 
+const addItem = gql`
+    mutation addItem (
+        $title: String!
+        $description: String!
+        $itemowner: ID!
+        $tags: [AssignedTag]!
+    ) {
+    addItem (
+        title: $title
+        description: $description
+        itemowner: $itemowner
+        tags: $tags
+    ) {
+        id
+    }
+    }
+`;
+
 // TO DO: Create step index and connect to store
 function mapStateToProps(state) {
     return {
-        stepIndex: state.share.stepIndex
+        values: state.form.share,
+        stepIndex: state.share.stepIndex,
+        authenticated: state.auth.userProfile,
+        imageUrl: state.share.imageUrl
     };
 }
 
 // TO DO: Prop Types
-export default connect(mapStateToProps)(ShareContainer);
+ShareContainer.propTypes = {
+    mutate: PropTypes.func.isRequired
+};
+
+const newItemData = graphql(addItem)(ShareContainer);
+export default connect(mapStateToProps)(newItemData);

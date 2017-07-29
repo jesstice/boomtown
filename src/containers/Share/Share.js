@@ -1,7 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
-// import ShareForm from '../../components/ShareForm/';
+import {
+    Field,
+    reduxForm
+    // isPristine,
+    // isSubmitting
+} from 'redux-form';
 
 import {
   Step,
@@ -9,16 +14,84 @@ import {
   StepLabel,
   StepContent,
 } from 'material-ui/Stepper';
+
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
+
 import './styles.css';
 
-const Share = ({ stepIndex, renderStepActions, handleImageUpload, selectImage, handleSubmit }) => {
+
+const validate = values => {
+    const errors = {};
+    const requiredFields = [
+        'title',
+        'description',
+        'tags'
+    ];
+    requiredFields.forEach(field => {
+        if (!values[field]) {
+            errors[field] = 'Required';
+        }
+    });
+    return errors;
+};
+
+const renderTextField = ({ input, label, meta: { touched, error }, ...custom }) => (
+    <TextField
+        hintText={label}
+        floatingLabelText={label}
+        errorText={touched && error}
+        {...input}
+        {...custom}
+    />
+);
+
+const renderSelectField = ({ input, label, meta: { touched, error }, children, ...custom }) => (
+    <SelectField
+        multiple={true}
+        floatingLabelText={label}
+        errorText={touched && error}
+        {...input}
+        onChange={(event, index, value) => input.onChange(value)}
+        children={children}
+        {...custom}
+    />
+);
+
+const listOfTags = [
+    { value: 8, name: 'Tools' },
+    { value: 9, name: 'Househouse Items' },
+    { value: 10, name: 'Physical Media' },
+    { value: 11, name: 'Musical Instruments' },
+    { value: 12, name: 'Sporting Goods' },
+    { value: 13, name: 'Electronics' },
+    { value: 14, name: 'Recreational Equipment' },
+];
+
+let Share = ({ stepIndex, renderStepActions, handleImageUpload, selectImage, handleSubmit, values }) => {
+
+    const renderMenuItems = (tags) => {
+        return tags.map((tag) => (
+            <MenuItem
+                key={tag.value}
+                insetChildren={true}
+                checked={values && values.tags.includes(tag.value)}
+                value={tag.value}
+                primaryText={tag.name}
+            />
+        ));
+    };
+
     let uploadInput = false;
 
     return (
         <div style={{ maxWidth: 380, maxHeight: 400, margin: 'auto' }}>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={(event) => {
+                event.preventDefault();
+                handleSubmit(values);
+            }}>
                 <Stepper activeStep={stepIndex} orientation="vertical">
                     <Step>
                         <StepLabel>Add an image</StepLabel>
@@ -42,7 +115,16 @@ const Share = ({ stepIndex, renderStepActions, handleImageUpload, selectImage, h
                         <StepLabel>Add a Title and Description.</StepLabel>
                         <StepContent>
                             <p>Describe the item to entice borrowers.</p>
-                            <TextField hintText="Item description" />
+                            <Field
+                                name="title"
+                                label="Item Title"
+                                component={renderTextField}
+                            />
+                            <Field
+                                name="description"
+                                label="Item Description"
+                                component={renderTextField}
+                            />
                             {renderStepActions(1)}
                         </StepContent>
                     </Step>
@@ -50,17 +132,31 @@ const Share = ({ stepIndex, renderStepActions, handleImageUpload, selectImage, h
                         <StepLabel>Categorize your item.</StepLabel>
                         <StepContent>
                             <p>Let us know what type of item it is!</p>
+                            <Field
+                                name="tags"
+                                label="Item Categories"
+                                component={renderSelectField}
+                            >
+                                {renderMenuItems(listOfTags)}
+                            </Field>
                             {renderStepActions(2)}
                         </StepContent>
                     </Step>
                     <Step>
-                        <StepLabel>Confirm your thang!</StepLabel>
+                        <StepLabel>Confirm your things!</StepLabel>
                         <StepContent>
                             <p>Is it all ready to share?</p>
+                            <button type="submit">Submit!</button>
                             {renderStepActions(3)}
                         </StepContent>
                     </Step>
                 </Stepper>
+                {/* <button type="submit" disabled={pristine || submitting}>
+                    Submit
+                </button>
+                <button type="button" disabled={pristine || submitting} onClick={reset}>
+                    Clear Values
+                </button> */}
                 {/* {finished && (
                     <p style={{ margin: '20px 0', textAlign: 'center' }}>
                         <a href="#" onClick={(event) => {
@@ -69,7 +165,7 @@ const Share = ({ stepIndex, renderStepActions, handleImageUpload, selectImage, h
                         }}
                         >
                         Click here
-                        </a> to reset the example.
+                        </a> reset the form.
                     </p>
                 )}  */}
             </form>
@@ -77,7 +173,18 @@ const Share = ({ stepIndex, renderStepActions, handleImageUpload, selectImage, h
     );
 };
 
+function mapStateToProps(state) {
+    return {
+        // submitting: isSubmitting(ownProps.formName)(state),
+        // pristine: isPristine(ownProps.formName)(state)
+    };
+}
+
+Share = reduxForm({
+    form: 'share',
+    validate
+})(Share);
 
 // To Do: Prop types go here...
 
-export default Share;
+export default connect(mapStateToProps)(Share);
