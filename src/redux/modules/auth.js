@@ -3,10 +3,10 @@ export const SHOW_SIGNUP_FORM = 'SHOW_SIGNUP_FORM';
 export const SHOW_LOGIN_ERROR = 'SHOW_LOGIN_ERROR';
 export const UPDATE_AUTH_STATE = 'UPDATE_AUTH_STATE';
 
-export function showSignupForm() {
+export function showSignupForm(bool) {
     return {
         type: SHOW_SIGNUP_FORM,
-        payload: true
+        payload: bool
     };
 }
 

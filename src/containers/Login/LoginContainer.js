@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import { FirebaseAuth } from '../../config/firebase';
+import { showSignupForm } from '../../redux/modules/auth';
 
 import Login from './Login';
 
@@ -15,8 +16,7 @@ class LoginContainer extends Component {
         // To do: add to thunk
         FirebaseAuth.signInWithEmailAndPassword(email, password).catch((error) => {
             if (error.code === 'auth/user-not-found') {
-                // user does not exist and must sign up
-                // direct to <SignupForm />
+                this.props.dispatch(showSignupForm(true));
             } else {
                 // there was an error, show a message
             }
@@ -31,11 +31,17 @@ class LoginContainer extends Component {
 
     render() {
         const { from } = this.props.location.state || { from: { pathname: '/' } };
-        const { authenticated } = this.props;
+        const { authenticated, signup } = this.props;
 
         if (authenticated) {
             return (
                 <Redirect to={from} />
+            );
+        }
+
+        if (signup) {
+            return (
+                <Redirect to={'/signup'} />
             );
         }
 
@@ -52,11 +58,10 @@ class LoginContainer extends Component {
     }
 }
 
-
-
 const mapStateToProps = state => ({
     values: state.form.login,
-    authenticated: state.auth.userProfile
+    authenticated: state.auth.userProfile,
+    signup: state.auth.signupForm
 });
 
 // To do:

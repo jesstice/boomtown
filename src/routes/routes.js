@@ -12,7 +12,7 @@ import NotFound from '../containers/NotFound';
 const Routes = () => (
     <Switch>
         <Route path="/login" component={Login} />
-        <PrivateRoute path="/signup" component={SignUp} />
+        <Route path="/signup" component={SignUp} />
         <PrivateRoute exact path="/" component={Items} />
         <PrivateRoute path="/profile/:id" component={Profile} />
         <PrivateRoute path="/share" component={Share} />
