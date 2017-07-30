@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Field, reduxForm } from 'redux-form';
+
 import RaisedButton from 'material-ui/RaisedButton';
 import Paper from 'material-ui/Paper';
 
@@ -11,7 +13,31 @@ import logo from '../../images/boomtown-logo.svg';
 import bottomLeft from '../../images/home-bl.svg';
 import topRight from '../../images/home-tr.svg';
 
-const Login = ({ login }) => (
+const validate = values => {
+    const errors = {};
+    const requiredFields = [
+        'email',
+        'password'
+    ];
+    requiredFields.forEach(field => {
+        if (!values[field]) {
+            errors[field] = 'Required';
+        }
+    });
+    return errors;
+};
+
+// const renderValidatedTextField = ({ input, label, meta: { touched, error }, ...custom }) => (
+//     <ValidatedTextField
+//         hintText={label}
+//         floatingLabelText={label}
+//         errorText={touched && error}
+//         {...input}
+//         {...custom}
+//     />
+// );
+
+let Login = ({ login }) => (
     <div className="page login">
         <div className="logo">
             <img src={logo} alt="Boomtown Logo" />
@@ -27,10 +53,20 @@ const Login = ({ login }) => (
                 <div className="formContainer">
                     <form onSubmit={login} autoComplete="off">
                         <div>
-                            <ValidatedTextField label="Email" />
+                            <Field
+                                name="email"
+                                label="Email"
+                                type="email"
+                                component={ValidatedTextField}
+                            />
                         </div>
                         <div>
-                            <ValidatedTextField label="Password" />
+                            <Field
+                                name="password"
+                                label="Password"
+                                type="password"
+                                component={ValidatedTextField}
+                            />
                         </div>
                         <RaisedButton className="enterButton" primary fullWidth type="submit">
                             Enter
@@ -41,6 +77,11 @@ const Login = ({ login }) => (
         </div>
     </div>
 );
+
+Login = reduxForm({
+    form: 'login',
+    validate
+})(Login);
 
 Login.propTypes = {
     login: PropTypes.func.isRequired

@@ -43,14 +43,19 @@ class LoginContainer extends Component {
             <Login login={(e) => {
                 e.preventDefault();
                 this.login({
-                    email: 'mackenzie@redacademy.com',
-                    password: 'mackenzie' }); }}
+                    email: this.props.values.values.email,
+                    password: this.props.values.values.password
+                });
+            }}
             />
         );
     }
 }
 
+
+
 const mapStateToProps = state => ({
+    values: state.form.login,
     authenticated: state.auth.userProfile
 });
 
