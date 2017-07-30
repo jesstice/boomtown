@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
-import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { gql, graphql } from 'react-apollo';
+
 import { FirebaseAuth } from '../../config/firebase';
 // import { Redirect } from 'react-router-dom';
 import SignUpForm from './SignUp';
@@ -16,13 +16,22 @@ class SignUpContainer extends Component {
     signUpUser = (event) => {
         event.preventDefault();
         this.props.mutate({
-            variables: { fullname: 'simba', bio: 'Hear me roar', email: 'simba@lion.ca', password: '123roar' }
+            variables: {
+                fullname: `${this.props.values.values.fullname}`,
+                bio: `${this.props.values.values.bio}`
+                // email: `${this.props.values.values.email}`,
+                // password: `${this.props.values.values.password}`
+            }
         })
-            .then(({ data }) => {
-                this.login({ email: 'simba@lion.ca', password: '123roar' });
-            }).catch((error) => {
-                console.log('there was an error sending the query', error);
-            });
+        .then(({ data }) => {
+            console.log('hollaaaa');
+            // this.login({
+            //     email: `${this.props.values.values.email}`,
+            //     password: `${this.props.values.values.password}`
+            // });
+        }).catch((error) => {
+            console.log('there was an error sending the query', error);
+        });
     }
 
     render() {
@@ -57,13 +66,14 @@ const addUser = gql`
     }
 `;
 
-// const mapStateToProps = state => ({
-//     authenticated: state.auth.userProfile
-// });
+function mapStateToProps(state) {
+    return {
+        values: state.form.signup,
+        authenticated: state.auth.userProfile
+    };
+}
 
 // To do: this.props.authenticated.propTypes = PropTypes.bool.isRequired;
 
 const newUserData = graphql(addUser)(SignUpContainer);
-export default newUserData;
-
-// export default connect(mapStateToProps)(SignUpContainer);
+export default connect(mapStateToProps)(newUserData);
