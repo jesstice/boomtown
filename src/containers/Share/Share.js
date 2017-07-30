@@ -61,13 +61,13 @@ const renderSelectField = ({ input, label, meta: { touched, error }, children, .
 );
 
 const listOfTags = [
-    { value: 8, name: 'Tools' },
-    { value: 9, name: 'Househouse Items' },
-    { value: 10, name: 'Physical Media' },
-    { value: 11, name: 'Musical Instruments' },
-    { value: 12, name: 'Sporting Goods' },
-    { value: 13, name: 'Electronics' },
-    { value: 14, name: 'Recreational Equipment' },
+    { id: 8, title: 'Tools' },
+    { id: 9, title: 'Househouse Items' },
+    { id: 10, title: 'Physical Media' },
+    { id: 11, title: 'Musical Instruments' },
+    { id: 12, title: 'Sporting Goods' },
+    { id: 13, title: 'Electronics' },
+    { id: 14, title: 'Recreational Equipment' },
 ];
 
 let Share = ({ stepIndex, renderStepActions, handleImageUpload, selectImage, handleSubmit, values }) => {
@@ -75,22 +75,21 @@ let Share = ({ stepIndex, renderStepActions, handleImageUpload, selectImage, han
     const renderMenuItems = (tags) => {
         return tags.map((tag) => (
             <MenuItem
-                key={tag.value}
+                key={tag.id}
                 insetChildren={true}
-                checked={values && values.tags.includes(tag.value)}
-                value={tag.value}
-                primaryText={tag.name}
+                checked={values && values.tags.includes(tag.id)}
+                value={tag.id}
+                primaryText={tag.title}
             />
         ));
     };
-
     let uploadInput = false;
 
     return (
         <div style={{ maxWidth: 380, maxHeight: 400, margin: 'auto' }}>
             <form onSubmit={(event) => {
                 event.preventDefault();
-                handleSubmit(values);
+                handleSubmit();
             }}>
                 <Stepper activeStep={stepIndex} orientation="vertical">
                     <Step>

@@ -45,12 +45,16 @@ class ShareContainer extends Component {
             });
     }
 
-    handleSubmit = (values) => {
+    handleSubmit = () => {
         this.props.mutate({
             variables: {
-                title: 'this.props.values.title',
-                itemowner: 'this.props.authenticated',
-                description: 'this.props.values.description',
+                title: `${this.props.values.values.title}`,
+                itemowner: `${this.props.authenticated}`,
+                description: `${this.props.values.values.description}`,
+                imageurl: `${this.props.imageurl}`,
+                tags: this.props.values.values.tags.map((tag) => {
+                    return { id: tag };
+                })
             }
         })
         .then(({ data }) => {
@@ -58,10 +62,8 @@ class ShareContainer extends Component {
         }).catch((error) => {
             console.log('there was an error sending the query', error);
         });
-    };
+    }
 
-
-    // To do: Add state and connect to presentational component
     renderStepActions = (step) => {
         const { stepIndex } = this.props;
 
@@ -97,7 +99,7 @@ class ShareContainer extends Component {
                 renderStepActions={this.renderStepActions}
                 handleImageUpload={this.handleImageUpload}
                 selectImage={this.selectImage}
-                handleSubmit={() => this.handleSubmit}
+                handleSubmit={this.handleSubmit}
             />
         );
     }
@@ -108,15 +110,25 @@ const addItem = gql`
         $title: String!
         $description: String!
         $itemowner: ID!
+        $imageurl: String!
         $tags: [AssignedTag]!
     ) {
     addItem (
         title: $title
         description: $description
         itemowner: $itemowner
+        imageurl: $imageurl
         tags: $tags
     ) {
-        id
+        title
+        description
+        itemowner {
+            id
+        }
+        imageurl
+        tags {
+            id
+        }
     }
     }
 `;
@@ -127,7 +139,7 @@ function mapStateToProps(state) {
         values: state.form.share,
         stepIndex: state.share.stepIndex,
         authenticated: state.auth.userProfile,
-        imageUrl: state.share.imageUrl
+        imageurl: state.share.imageurl
     };
 }
 

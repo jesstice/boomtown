@@ -7,7 +7,7 @@ export function showSignupForm() {
     return {
         type: SHOW_SIGNUP_FORM,
         payload: true
-    }
+    };
 }
 
 export function updateAuthState(userid) {

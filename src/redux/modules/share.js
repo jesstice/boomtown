@@ -22,7 +22,7 @@ export function setItemImageUrl(url) {
 const initialState = {
     stepIndex: 0,
     finished: false,
-    imageUrl: ''
+    imageurl: ''
 };
 
 export function shareReducer(state = initialState, action) {
@@ -30,7 +30,7 @@ export function shareReducer(state = initialState, action) {
         case UPDATE_STEP_INDEX:
             return { ...state, stepIndex: action.payload };
          case SET_ITEM_IMAGE_URL:
-            return { ...state, imageUrl: action.payload };
+            return { ...state, imageurl: action.payload };
         default:
             return state;
     }

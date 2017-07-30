@@ -11,8 +11,7 @@ class ItemsContainer extends Component {
 
     filterItemsList = (filterValues, items) => {
         if (filterValues.length) {
-            return items.filter((itemData) => itemData.tags.find(tag => filterValues.includes(tag))
-            );
+            return items.filter(item => item.tags.map(tag => tag.title).find(title => filterValues.includes(title)));
         }
         return items;
     }

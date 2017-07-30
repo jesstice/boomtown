@@ -19,7 +19,6 @@ import './styles.css';
 
 const ItemCard = ({ itemDetails }) => {
     let tags = itemDetails.tags.map(tag => tag.title).join(', ');
-    // TO DO: format tags as it's an array of objects itemDetails.tags.map(tag => tag.title).join(', ')
 
     return (
         <li className="itemCardWrapper">

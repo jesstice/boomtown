@@ -18,6 +18,6 @@ networkInterface.use([{
     }
 }]);
 
-const client = new ApolloClient({ networkInterface });
+const client = new ApolloClient({ networkInterface, connectToDevTools: true });
 
 export default client;

@@ -8,7 +8,7 @@
       "tags": [
         "Household Items"
       ],
-      "itemOwner": "TyHcYnSocuOg6PmWQivgxerTLcq2",
+      "itemowner": "TyHcYnSocuOg6PmWQivgxerTLcq2",
       "createdOn": 1497558858,
       "available": true,
       "borrower": null
@@ -22,7 +22,7 @@
         "Household Items",
         "Recreational Equipment"
       ],
-      "itemOwner": "dQg4HT262FYOiuOUIRj1xrXjOva2",
+      "itemowner": "dQg4HT262FYOiuOUIRj1xrXjOva2",
       "createdOn": 1497546618,
       "available": false,
       "borrower": "LAi9TYWxgGhbjgHu1Sm6ZvB1tRP2"
@@ -35,7 +35,7 @@
       "tags": [
         "Musical Instruments"
       ],
-      "itemOwner": "LAi9TYWxgGhbjgHu1Sm6ZvB1tRP2",
+      "itemowner": "LAi9TYWxgGhbjgHu1Sm6ZvB1tRP2",
       "createdOn": 1497534618,
       "available": true,
       "borrower": null
@@ -48,7 +48,7 @@
       "tags": [
         "Tools"
       ],
-      "itemOwner": "dQg4HT262FYOiuOUIRj1xrXjOva2",
+      "itemowner": "dQg4HT262FYOiuOUIRj1xrXjOva2",
       "createdOn": 1497504600,
       "available": true,
       "borrower": null
@@ -61,7 +61,7 @@
       "tags": [
         "Physical Media"
       ],
-      "itemOwner": "TyHcYnSocuOg6PmWQivgxerTLcq2",
+      "itemowner": "TyHcYnSocuOg6PmWQivgxerTLcq2",
       "createdOn": 1497489120,
       "available": false,
       "borrower": "dQg4HT262FYOiuOUIRj1xrXjOva2"
@@ -74,7 +74,7 @@
       "tags": [
         "Physical Media"
       ],
-      "itemOwner": "TyHcYnSocuOg6PmWQivgxerTLcq2",
+      "itemowner": "TyHcYnSocuOg6PmWQivgxerTLcq2",
       "createdOn": 1497466800,
       "available": true,
       "borrower": null
@@ -87,7 +87,7 @@
       "tags": [
         "Musical Instruments"
       ],
-      "itemOwner": "LAi9TYWxgGhbjgHu1Sm6ZvB1tRP2",
+      "itemowner": "LAi9TYWxgGhbjgHu1Sm6ZvB1tRP2",
       "createdOn": 1497433740,
       "available": true,
       "borrower": null
@@ -101,7 +101,7 @@
         "Recreational Equipment",
         "Sporting Goods"
       ],
-      "itemOwner": "TyHcYnSocuOg6PmWQivgxerTLcq2",
+      "itemowner": "TyHcYnSocuOg6PmWQivgxerTLcq2",
       "createdOn": 1497406380,
       "available": false,
       "borrower": "LAi9TYWxgGhbjgHu1Sm6ZvB1tRP2"
@@ -114,7 +114,7 @@
       "tags": [
         "Sporting Goods"
       ],
-      "itemOwner": "LAi9TYWxgGhbjgHu1Sm6ZvB1tRP2",
+      "itemowner": "LAi9TYWxgGhbjgHu1Sm6ZvB1tRP2",
       "createdOn": 1497398220,
       "available": false,
       "borrower": "TyHcYnSocuOg6PmWQivgxerTLcq2"
@@ -127,7 +127,7 @@
       "tags": [
         "Household Items"
       ],
-      "itemOwner": "TyHcYnSocuOg6PmWQivgxerTLcq2",
+      "itemowner": "TyHcYnSocuOg6PmWQivgxerTLcq2",
       "createdOn": 1497377580,
       "available": true,
       "borrower": null
@@ -140,7 +140,7 @@
       "tags": [
         "Electronics"
       ],
-      "itemOwner": "dQg4HT262FYOiuOUIRj1xrXjOva2",
+      "itemowner": "dQg4HT262FYOiuOUIRj1xrXjOva2",
       "createdOn": 1497365340,
       "available": true,
       "borrower": null
@@ -153,7 +153,7 @@
       "tags": [
         "Electronics"
       ],
-      "itemOwner": "dQg4HT262FYOiuOUIRj1xrXjOva2",
+      "itemowner": "dQg4HT262FYOiuOUIRj1xrXjOva2",
       "createdOn": 1497333660,
       "available": false,
       "borrower": "TyHcYnSocuOg6PmWQivgxerTLcq2"
@@ -166,7 +166,7 @@
       "tags": [
         "Physical Media"
       ],
-      "itemOwner": "TyHcYnSocuOg6PmWQivgxerTLcq2",
+      "itemowner": "TyHcYnSocuOg6PmWQivgxerTLcq2",
       "createdOn": 1497313680,
       "available": true,
       "borrower": null
@@ -179,7 +179,7 @@
       "tags": [
         "Electronics"
       ],
-      "itemOwner": "LAi9TYWxgGhbjgHu1Sm6ZvB1tRP2",
+      "itemowner": "LAi9TYWxgGhbjgHu1Sm6ZvB1tRP2",
       "createdOn": 1497280260,
       "available": true,
       "borrower": null
@@ -192,7 +192,7 @@
       "tags": [
         "Electronics"
       ],
-      "itemOwner": "dQg4HT262FYOiuOUIRj1xrXjOva2",
+      "itemowner": "dQg4HT262FYOiuOUIRj1xrXjOva2",
       "createdOn": 1497264000,
       "available": true,
       "borrower": null
@@ -205,7 +205,7 @@
       "tags": [
         "Tools"
       ],
-      "itemOwner": "TyHcYnSocuOg6PmWQivgxerTLcq2",
+      "itemowner": "TyHcYnSocuOg6PmWQivgxerTLcq2",
       "createdOn": 1497238620,
       "available": false,
       "borrower": "dQg4HT262FYOiuOUIRj1xrXjOva2"
@@ -218,7 +218,7 @@
       "tags": [
         "Recreational Equipment"
       ],
-      "itemOwner": "LAi9TYWxgGhbjgHu1Sm6ZvB1tRP2",
+      "itemowner": "LAi9TYWxgGhbjgHu1Sm6ZvB1tRP2",
       "createdOn": 1497196860,
       "available": true,
       "borrower": null
@@ -231,7 +231,7 @@
       "tags": [
         "Recreational Equipment"
       ],
-      "itemOwner": "dQg4HT262FYOiuOUIRj1xrXjOva2",
+      "itemowner": "dQg4HT262FYOiuOUIRj1xrXjOva2",
       "createdOn": 1497144600,
       "available": true,
       "borrower": null
@@ -244,7 +244,7 @@
       "tags": [
         "Electronics"
       ],
-      "itemOwner": "dQg4HT262FYOiuOUIRj1xrXjOva2",
+      "itemowner": "dQg4HT262FYOiuOUIRj1xrXjOva2",
       "createdOn": 1497120540,
       "available": true,
       "borrower": null
@@ -257,7 +257,7 @@
       "tags": [
         "Tools"
       ],
-      "itemOwner": "TyHcYnSocuOg6PmWQivgxerTLcq2",
+      "itemowner": "TyHcYnSocuOg6PmWQivgxerTLcq2",
       "createdOn": 1497072300,
       "available": false,
       "borrower": "LAi9TYWxgGhbjgHu1Sm6ZvB1tRP2"
@@ -270,7 +270,7 @@
       "tags": [
         "Household Items"
       ],
-      "itemOwner": "LAi9TYWxgGhbjgHu1Sm6ZvB1tRP2",
+      "itemowner": "LAi9TYWxgGhbjgHu1Sm6ZvB1tRP2",
       "createdOn": 1497044400,
       "available": true,
       "borrower": null
@@ -282,7 +282,7 @@
       "tags": [
         "Household Items"
       ],
-      "itemOwner": "dQg4HT262FYOiuOUIRj1xrXjOva2",
+      "itemowner": "dQg4HT262FYOiuOUIRj1xrXjOva2",
       "createdOn": 1500663043,
       "available": true,
       "borrower": null,
