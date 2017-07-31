@@ -27,16 +27,6 @@ const validate = values => {
     return errors;
 };
 
-// const renderValidatedTextField = ({ input, label, meta: { touched, error }, ...custom }) => (
-//     <ValidatedTextField
-//         hintText={label}
-//         floatingLabelText={label}
-//         errorText={touched && error}
-//         {...input}
-//         {...custom}
-//     />
-// );
-
 let Login = ({ login }) => (
     <div className="page login">
         <div className="logo">

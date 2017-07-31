@@ -28,7 +28,6 @@ class SignUpContainer extends Component {
                 email: `${this.props.values.values.email}`,
                 password: `${this.props.values.values.password}`
             });
-
         }).catch((error) => {
             console.log('there was an error sending the query', error);
         });
@@ -73,7 +72,21 @@ function mapStateToProps(state) {
     };
 }
 
-// To do: this.props.authenticated.propTypes = PropTypes.bool.isRequired;
+SignUpContainer.propTypes = {
+    mutate: PropTypes.func.isRequired,
+    values: PropTypes.shape({
+        values: PropTypes.shape({
+            email: PropTypes.string,
+            password: PropTypes.string,
+            bio: PropTypes.string,
+            fullname: PropTypes.string
+        })
+    }).isRequired,
+    authenticated: PropTypes.oneOfType([
+        PropTypes.bool,
+        PropTypes.string
+    ]).isRequired
+};
 
 const newUserData = graphql(addUser)(SignUpContainer);
 export default connect(mapStateToProps)(newUserData);

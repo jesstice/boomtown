@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
@@ -33,6 +34,12 @@ const FilterList = ({ dispatch, filterValues, handleChange }) => {
             ))}
         </SelectField>
     );
+};
+
+FilterList.propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    filterValues: PropTypes.arrayOf(PropTypes.string).isRequired,
+    handleChange: PropTypes.func.isRequired
 };
 
 export default FilterList;

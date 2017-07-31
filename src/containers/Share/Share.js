@@ -70,7 +70,7 @@ const listOfTags = [
     { id: 14, title: 'Recreational Equipment' },
 ];
 
-let Share = ({ stepIndex, renderStepActions, handleImageUpload, selectImage, handleSubmit, values }) => {
+let Share = ({ stepIndex, renderStepActions, selectImage, handleImageUpload, handleSubmit, values }) => {
 
     let uploadInput = false;
     const renderMenuItems = (tags) => {
@@ -154,18 +154,33 @@ let Share = ({ stepIndex, renderStepActions, handleImageUpload, selectImage, han
     );
 };
 
-function mapStateToProps(state) {
-    return {
-        // submitting: isSubmitting(ownProps.formName)(state),
-        // pristine: isPristine(ownProps.formName)(state)
-    };
-}
-
 Share = reduxForm({
     form: 'share',
     validate
 })(Share);
 
-// To Do: Prop types go here...
+renderSelectField.propTypes = {
+    input: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired
+};
 
-export default connect(mapStateToProps)(Share);
+renderTextField.propTypes = {
+    input: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired
+};
+
+Share.propTypes = {
+    stepIndex: PropTypes.number.isRequired,
+    renderStepActions: PropTypes.func.isRequired,
+    handleImageUpload: PropTypes.func.isRequired,
+    selectImage: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+    values: PropTypes.shape({
+        values: PropTypes.shape({
+            email: PropTypes.string,
+            password: PropTypes.string
+        })
+    }).isRequired
+};
+
+export default Share;

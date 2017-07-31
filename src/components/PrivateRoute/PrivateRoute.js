@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import {
     Route,
     Redirect
@@ -25,9 +26,12 @@ const mapStateToProps = state => ({
     authenticated: state.auth.userProfile,
 });
 
-// TO DO: Props validation
-// Route.propTypes = {
-
-// }
+PrivateRoute.propTypes = {
+    authenticated: PropTypes.oneOfType([
+        PropTypes.bool,
+        PropTypes.string
+    ]).isRequired,
+    location: PropTypes.string.isRequired
+};
 
 export default connect(mapStateToProps)(PrivateRoute);

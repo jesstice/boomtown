@@ -32,7 +32,9 @@ const ValidatedTextField = ({ input, label, type, ...custom }) => (
 );
 
 ValidatedTextField.propTypes = {
-    label: PropTypes.string.isRequired
+    label: PropTypes.string.isRequired,
+    input: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired
 };
 
 export default ValidatedTextField;

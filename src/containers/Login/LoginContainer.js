@@ -18,15 +18,9 @@ class LoginContainer extends Component {
             if (error.code === 'auth/user-not-found') {
                 this.props.dispatch(showSignupForm(true));
             } else {
-                // there was an error, show a message
+                console.log(error.message);
             }
-            // var errorCode = error.code;
-            // var errorMessage = error.message;
         });
-    }
-
-    join = () => {
-        // To do: connect form with graphql
     }
 
     render() {
@@ -64,8 +58,20 @@ const mapStateToProps = state => ({
     signup: state.auth.signupForm
 });
 
-// To do:
-// this.props.authenticated.propTypes = PropTypes.bool.isRequired;
-// location.state.propTypes
+LoginContainer.propTypes = {
+    authenticated: PropTypes.oneOfType([
+        PropTypes.bool,
+        PropTypes.string
+    ]).isRequired,
+    location: PropTypes.string.isRequired,
+    signup: PropTypes.bool.isRequired,
+    values: PropTypes.shape({
+        values: PropTypes.shape({
+            email: PropTypes.string,
+            password: PropTypes.string
+        })
+    }).isRequired,
+    dispatch: PropTypes.func.isRequired
+};
 
 export default connect(mapStateToProps)(LoginContainer);

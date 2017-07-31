@@ -14,7 +14,17 @@ const Profile = ({ userData }) => (
 );
 
 Profile.propTypes = {
-    userData: PropTypes.array
+    userData: PropTypes.shape({
+        fullname: PropTypes.string,
+        bio: PropTypes.string,
+        email: PropTypes.string,
+        borrowed: PropTypes.shape({
+            title: PropTypes.string,
+            itemowner: PropTypes.shape({
+                fullname: PropTypes.string
+            })
+        })
+    }).isRequired
 };
 
 export default Profile;

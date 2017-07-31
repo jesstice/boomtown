@@ -35,7 +35,6 @@ class ShareContainer extends Component {
         const userId = FirebaseAuth.currentUser.uid;
         const fileName = this.fileInput.files[0].name;
 
-        // this.props.dispatch(startImageUpload());
         // updates the store with the new image
         firebaseStorage.child(`images/${userId}/${fileName}`)
             .put(this.fileInput.files[0])
@@ -67,7 +66,7 @@ class ShareContainer extends Component {
     }
 
     renderStepActions = (step) => {
-        const { stepIndex, finished } = this.props;
+        const { stepIndex } = this.props;
 
         return (
             <div style={{ margin: '12px 0' }}>
@@ -142,7 +141,6 @@ const addItem = gql`
     }
 `;
 
-// TO DO: Create step index and connect to store
 function mapStateToProps(state) {
     return {
         values: state.form.share,
@@ -153,9 +151,23 @@ function mapStateToProps(state) {
     };
 }
 
-// TO DO: Prop Types
 ShareContainer.propTypes = {
-    mutate: PropTypes.func.isRequired
+    mutate: PropTypes.func.isRequired,
+    values: PropTypes.shape({
+        values: PropTypes.shape({
+            title: PropTypes.string,
+            description: PropTypes.string,
+            tags: PropTypes.array,
+        })
+    }).isRequired,
+    dispatch: PropTypes.func.isRequired,
+    stepIndex: PropTypes.number.isRequired,
+    finished: PropTypes.bool.isRequired,
+    authenticated: PropTypes.oneOfType([
+        PropTypes.bool,
+        PropTypes.string
+    ]).isRequired,
+    imageurl: PropTypes.string.isRequired
 };
 
 const newItemData = graphql(addItem)(ShareContainer);

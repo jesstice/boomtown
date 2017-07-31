@@ -1,12 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {
-    Field,
-    reduxForm
-    // isPristine,
-    // isSubmitting
-} from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -91,6 +86,15 @@ SignUpForm = reduxForm({
 
 SignUpForm.PropTypes = {
     signUpUser: PropTypes.func.isRequired
+};
+
+renderTextField.propTypes = {
+    input: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    hintText: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    rows: PropTypes.number.isRequired,
+    multiLine: PropTypes.bool.isRequired
 };
 
 export default SignUpForm;

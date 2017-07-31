@@ -59,7 +59,7 @@ ItemsContainer.propTypes = {
         loading: PropTypes.bool.isRequired,
         itemsData: PropTypes.object,
     }).isRequired,
-    filterValues: PropTypes.array
+    filterValues: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 const itemsDataList = graphql(fetchItemsData)(ItemsContainer);

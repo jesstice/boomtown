@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import FloatingActionButton from 'material-ui/FloatingActionButton';
@@ -28,5 +29,12 @@ function mapStateToProps(state) {
         authenticated: state.auth.userProfile
     };
 }
+
+ShareButton.propTypes = {
+    authenticated: PropTypes.oneOfType([
+        PropTypes.bool,
+        PropTypes.string
+    ]).isRequired
+};
 
 export default connect(mapStateToProps)(ShareButton);

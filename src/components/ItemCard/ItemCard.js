@@ -53,7 +53,21 @@ const ItemCard = ({ itemDetails }) => {
 };
 
 ItemCard.propTypes = {
-    itemDetails: PropTypes.array
+    itemDetails: PropTypes.shape({
+        title: PropTypes.string,
+        description: PropTypes.string,
+        imageurl: PropTypes.string,
+        createdon: PropTypes.string,
+        tags: PropTypes.array,
+        itemowner: PropTypes.shape({
+            id: PropTypes.string,
+            fullname: PropTypes.string,
+            email: PropTypes.string
+        }),
+        borrower: PropTypes.shape({
+            fullname: PropTypes.string
+        })
+    }).isRequired
 };
 
 export default ItemCard;
