@@ -20,34 +20,37 @@ const style = {
 
 const Header = ({ dispatch, filterValues, authenticated }) => {
     if (authenticated) {
-        return <AppBar
-                    iconElementLeft={
-                        <Link exact to="/">
-                            <img className="header-logo" src={Logo} alt="logo" />
-                        </Link>}
-                    title={
-                            <FilterList
-                                dispatch={dispatch}
-                                handleChange={selectFilterItems}
-                                filterValues={filterValues}
-                            />
-                    }
-                >
-                    <div className="header-right">
-                        <RaisedButton
-                            label="My Profile"
-                            containerElement={<Link to={`/profile/${authenticated}`} />}
-                            primary={true}
-                            style={style.profile}
-                        />
-                        <RaisedButton
-                            label="Logout"
-                            onTouchTap={() => FirebaseAuth.signOut()}
-                            secondary={true}
-                            style={style}
-                        />
-                    </div>
-                </AppBar>
+        return (
+            <AppBar
+                iconElementLeft={
+                    <Link exact to="/">
+                        <img className="header-logo" src={Logo} alt="logo" />
+                    </Link>
+                }
+                title={
+                    <FilterList
+                        dispatch={dispatch}
+                        handleChange={selectFilterItems}
+                        filterValues={filterValues}
+                    />
+                }
+            >
+                <div className="header-right">
+                    <RaisedButton
+                        label="My Profile"
+                        containerElement={<Link to={`/profile/${authenticated}`} />}
+                        primary={true}
+                        style={style.profile}
+                    />
+                    <RaisedButton
+                        label="Logout"
+                        onTouchTap={() => FirebaseAuth.signOut()}
+                        secondary={true}
+                        style={style}
+                    />
+                </div>
+            </AppBar>
+        );
     } else {
         return null;
     }
