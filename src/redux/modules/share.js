@@ -1,6 +1,6 @@
 // ACTION CONSTANTS
 export const UPDATE_STEP_INDEX = 'UPDATE_STEP_INDEX';
-export const UPDATE_FINISHED_STATE = 'UPDATE_FINISHED_STATE';
+export const COMPLETE_SIGNUP_FORM = 'COMPLETE_SIGNUP_FORM';
 export const SET_ITEM_IMAGE_URL = 'SET_ITEM_IMAGE_URL';
 
 // ACTION CREATORS
@@ -18,6 +18,20 @@ export function setItemImageUrl(url) {
     };
 }
 
+export function completeSignupForm(bool) {
+    return {
+        type: COMPLETE_SIGNUP_FORM,
+        payload: bool
+    };
+}
+
+export function resetShareForm() {
+    return (dispatch) => {
+        dispatch(updateStepIndex(0));
+        dispatch(completeSignupForm(false));
+    };
+}
+
 // REDUCERS
 const initialState = {
     stepIndex: 0,
@@ -31,6 +45,8 @@ export function shareReducer(state = initialState, action) {
             return { ...state, stepIndex: action.payload };
          case SET_ITEM_IMAGE_URL:
             return { ...state, imageurl: action.payload };
+        case COMPLETE_SIGNUP_FORM:
+            return { ...state, finished: action.payload };
         default:
             return state;
     }

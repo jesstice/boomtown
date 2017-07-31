@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { gql, graphql } from 'react-apollo';
+import { Redirect } from 'react-router-dom';
 
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import { FirebaseStorage, FirebaseAuth } from '../../config/firebase';
-import { updateStepIndex, setItemImageUrl } from '../../redux/modules/share';
+import { updateStepIndex, setItemImageUrl, completeSignupForm, resetShareForm } from '../../redux/modules/share';
 
 import Share from './Share';
 
@@ -46,6 +47,7 @@ class ShareContainer extends Component {
     }
 
     handleSubmit = () => {
+        this.props.dispatch(completeSignupForm(true));
         this.props.mutate({
             variables: {
                 title: `${this.props.values.values.title}`,
@@ -65,7 +67,7 @@ class ShareContainer extends Component {
     }
 
     renderStepActions = (step) => {
-        const { stepIndex } = this.props;
+        const { stepIndex, finished } = this.props;
 
         return (
             <div style={{ margin: '12px 0' }}>
@@ -74,7 +76,7 @@ class ShareContainer extends Component {
                     disableTouchRipple={true}
                     disableFocusRipple={true}
                     primary={true}
-                    onTouchTap={() => this.handleNext()}
+                    onTouchTap={stepIndex === 3 ? () => this.handleSubmit() : () => this.handleNext()}
                     style={{ marginRight: 12 }}
                 />
                 { step > 0 && (
@@ -91,7 +93,14 @@ class ShareContainer extends Component {
     }
 
     render() {
-        const { stepIndex } = this.props;
+        const { stepIndex, finished } = this.props;
+
+        if (finished) {
+            this.props.dispatch(resetShareForm());
+            return (
+                <Redirect to={'/'} />
+            );
+        }
 
         return (
             <Share
@@ -139,7 +148,8 @@ function mapStateToProps(state) {
         values: state.form.share,
         stepIndex: state.share.stepIndex,
         authenticated: state.auth.userProfile,
-        imageurl: state.share.imageurl
+        imageurl: state.share.imageurl,
+        finished: state.share.finished
     };
 }
 
