@@ -18,7 +18,7 @@ import * as moment from 'moment';
 import './styles.css';
 
 const ItemCard = ({ itemDetails }) => {
-    let tags = itemDetails.tags.map(tag => tag.title).join(', ');
+    const tags = itemDetails.tags.map(tag => tag.title).join(', ');
 
     return (
         <li className="itemCardWrapper">
@@ -45,7 +45,7 @@ const ItemCard = ({ itemDetails }) => {
                 <CardTitle title={itemDetails.title} subtitle={tags} />
                 <CardText>{itemDetails.description}</CardText>
                 <CardActions>
-                    <RaisedButton label="Borrow" secondary={true} />
+                    <RaisedButton label="Borrow" secondary />
                 </CardActions>
             </Card>
         </li>

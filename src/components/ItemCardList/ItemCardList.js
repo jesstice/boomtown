@@ -9,24 +9,24 @@ const masonryOptions = {
     transitionDuration: 1
 };
 
-const ItemCardList = ({ itemsData }) => {
-    return (
-        <Masonry
-            className="itemCardListWrapper"
-            elementType={'ul'}
-            options={masonryOptions}
-        >
-            { itemsData && itemsData.map(itemData => (
-                <ItemCard key={itemData.id} itemDetails={itemData} />
-            ))}
-        </Masonry>
-    );
-};
+const ItemCardList = ({ itemsData }) => (
+    <Masonry
+        className="itemCardListWrapper"
+        elementType={'ul'}
+        options={masonryOptions}
+    >
+        { itemsData && itemsData.map(itemData => (
+            <ItemCard key={itemData.imageurl} itemDetails={itemData} />
+        ))}
+    </Masonry>
+);
 
 ItemCardList.propTypes = {
-    itemsData: PropTypes.shape({
-        id: PropTypes.string
-    }).isRequired
+    itemsData: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string
+        }).isRequired
+    )
 };
 
 export default ItemCardList;

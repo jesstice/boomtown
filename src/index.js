@@ -18,7 +18,7 @@ import Layout from './components/Layout';
 
 injectTapEventPlugin();
 
-FirebaseAuth.onAuthStateChanged(function(user) {
+FirebaseAuth.onAuthStateChanged((user) => {
     if (user) {
         store.dispatch(updateAuthState(user.uid));
     } else {

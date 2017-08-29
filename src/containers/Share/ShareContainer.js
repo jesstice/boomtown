@@ -12,9 +12,8 @@ import { updateStepIndex, setItemImageUrl, completeSignupForm, resetShareForm } 
 import Share from './Share';
 
 class ShareContainer extends Component {
-
-    handleNext = () => {
-        const { stepIndex } = this.props;
+    
+    handleNext = (stepIndex) => {
         return this.props.dispatch(updateStepIndex(stepIndex + 1));
     }
 
@@ -39,7 +38,6 @@ class ShareContainer extends Component {
         firebaseStorage.child(`images/${userId}/${fileName}`)
             .put(this.fileInput.files[0])
             .then(result => {
-                console.log(result);
                 this.props.dispatch(setItemImageUrl(result.metadata.downloadURLs[0]));
                 this.handleNext();
             });
@@ -61,7 +59,7 @@ class ShareContainer extends Component {
         .then(({ data }) => {
             console.log('got data', data);
         }).catch((error) => {
-            console.log('there was an error sending the query', error);
+            throw error;
         });
     }
 
@@ -72,19 +70,19 @@ class ShareContainer extends Component {
             <div style={{ margin: '12px 0' }}>
                 <RaisedButton
                     label={stepIndex === 3 ? 'Finish' : 'Next'}
-                    disableTouchRipple={true}
-                    disableFocusRipple={true}
-                    primary={true}
-                    onTouchTap={stepIndex === 3 ? () => this.handleSubmit() : () => this.handleNext()}
+                    disableTouchRipple
+                    disableFocusRipple
+                    primary
+                    onTouchTap={stepIndex === 3 ? () => this.handleSubmit() : () => this.handleNext(stepIndex)}
                     style={{ marginRight: 12 }}
                 />
                 { step > 0 && (
                     <FlatButton
                         label="Back"
                         disabled={stepIndex === 0}
-                        disableTouchRipple={true}
-                        disableFocusRipple={true}
-                        onTouchTap={() => this.handlePrev()}
+                        disableTouchRipple
+                        disableFocusRipple
+                        onTouchTap={() => this.handlePrev(stepIndex)}
                     />
                 ) }
             </div>
@@ -108,6 +106,7 @@ class ShareContainer extends Component {
                 handleImageUpload={this.handleImageUpload}
                 selectImage={this.selectImage}
                 handleSubmit={this.handleSubmit}
+                shareForm={this.props.values}
             />
         );
     }

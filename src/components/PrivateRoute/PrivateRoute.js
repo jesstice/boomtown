@@ -31,7 +31,13 @@ PrivateRoute.propTypes = {
         PropTypes.bool,
         PropTypes.string
     ]).isRequired,
-    location: PropTypes.string.isRequired
+    location: PropTypes.shape({
+        hash: PropTypes.string,
+        key: PropTypes.string,
+        pathname: PropTypes.string,
+        search: PropTypes.string,
+    }).isRequired,
+    component: PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps)(PrivateRoute);

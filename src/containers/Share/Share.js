@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
     Field,
@@ -50,14 +49,15 @@ const renderTextField = ({ input, label, meta: { touched, error }, ...custom }) 
 
 const renderSelectField = ({ input, label, meta: { touched, error }, children, ...custom }) => (
     <SelectField
-        multiple={true}
+        multiple
         floatingLabelText={label}
         errorText={touched && error}
         {...input}
         onChange={(event, index, value) => input.onChange(value)}
-        children={children}
         {...custom}
-    />
+    >
+        {children}
+    </SelectField>
 );
 
 const listOfTags = [
@@ -70,15 +70,14 @@ const listOfTags = [
     { id: 14, title: 'Recreational Equipment' },
 ];
 
-let Share = ({ stepIndex, renderStepActions, selectImage, handleImageUpload, handleSubmit, values }) => {
-
+let Share = ({ stepIndex, renderStepActions, selectImage, handleImageUpload, handleSubmit, shareForm }) => {
     let uploadInput = false;
     const renderMenuItems = (tags) => {
         return tags.map((tag) => (
             <MenuItem
                 key={tag.id}
-                insetChildren={true}
-                checked={values && values.values.tags.includes(tag.id)}
+                insetChildren
+                checked={shareForm && shareForm.values && shareForm.values.tags.includes(tag.id)}
                 value={tag.id}
                 primaryText={tag.title}
             />
@@ -87,10 +86,12 @@ let Share = ({ stepIndex, renderStepActions, selectImage, handleImageUpload, han
 
     return (
         <div style={{ maxWidth: 380, maxHeight: 400, margin: 'auto' }}>
-            <form onSubmit={(event) => {
-                event.preventDefault();
-                handleSubmit();
-            }}>
+            <form
+                onSubmit={(event) => {
+                    event.preventDefault();
+                    handleSubmit();
+                }}
+            >
                 <Stepper activeStep={stepIndex} orientation="vertical">
                     <Step>
                         <StepLabel>Add an image</StepLabel>

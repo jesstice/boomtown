@@ -18,7 +18,7 @@ const FilterList = ({ dispatch, filterValues, handleChange }) => {
 
     return (
         <SelectField
-            multiple={true}
+            multiple
             hintText="Filter by Tag"
             value={filterValues}
             onChange={(event, index, value) => dispatch(handleChange(value))}
@@ -26,7 +26,7 @@ const FilterList = ({ dispatch, filterValues, handleChange }) => {
             {tags.map((tag) => (
                 <MenuItem
                     key={tag}
-                    insetChildren={true}
+                    insetChildren
                     checked={filterValues && filterValues.includes(tag)}
                     value={tag}
                     primaryText={tag}

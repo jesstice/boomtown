@@ -59,7 +59,20 @@ LoginContainer.propTypes = {
         PropTypes.bool,
         PropTypes.string
     ]).isRequired,
-    location: PropTypes.string.isRequired,
+    location: PropTypes.shape({
+        hash: PropTypes.string,
+        key: PropTypes.string,
+        pathname: PropTypes.string,
+        search: PropTypes.string,
+        state: PropTypes.shape({
+            from: PropTypes.shape({
+                hash: PropTypes.string,
+                key: PropTypes.string,
+                pathname: PropTypes.string,
+                search: PropTypes.string,
+            })
+        })
+    }).isRequired,
     signup: PropTypes.bool.isRequired,
     values: PropTypes.shape({
         values: PropTypes.shape({

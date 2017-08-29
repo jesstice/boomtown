@@ -39,21 +39,20 @@ const Header = ({ dispatch, filterValues, authenticated }) => {
                     <RaisedButton
                         label="My Profile"
                         containerElement={<Link to={`/profile/${authenticated}`} />}
-                        primary={true}
+                        primary
                         style={style.profile}
                     />
                     <RaisedButton
                         label="Logout"
                         onTouchTap={() => FirebaseAuth.signOut()}
-                        secondary={true}
+                        secondary
                         style={style}
                     />
                 </div>
             </AppBar>
         );
-    } else {
-        return null;
     }
+    return null;
 };
 
 function mapStateToProps(state) {

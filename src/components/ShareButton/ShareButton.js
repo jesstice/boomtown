@@ -13,15 +13,14 @@ const ShareButton = ({ authenticated }) => {
         return (
             <FloatingActionButton
                 className="shareButton"
-                secondary={true}
+                secondary
                 containerElement={<Link to={'/share'} />}
             >
                 <ContentAdd />
             </FloatingActionButton>
         );
-    } else {
-        return null;
     }
+    return null;
 };
 
 function mapStateToProps(state) {

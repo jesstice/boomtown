@@ -18,7 +18,7 @@ const styles = {
     }
 };
 
-const ValidatedTextField = ({ input, label, type, ...custom }) => (
+const ValidatedTextField = ({ input, label, type }) => (
     <TextField
         style={styles.fieldStyle}
         hintText={label}
@@ -27,13 +27,11 @@ const ValidatedTextField = ({ input, label, type, ...custom }) => (
         underlineFocusStyle={styles.underlineStyle}
         type={type}
         {...input}
-        {...custom}
     />
 );
 
 ValidatedTextField.propTypes = {
     label: PropTypes.string.isRequired,
-    input: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired
 };
 
