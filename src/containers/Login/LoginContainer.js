@@ -9,16 +9,12 @@ import Login from './Login';
 
 class LoginContainer extends Component {
 
-    static propTypes = {
-    };
-
     login = ({ email, password }) => {
-        // To do: add to thunk
         FirebaseAuth.signInWithEmailAndPassword(email, password).catch((error) => {
             if (error.code === 'auth/user-not-found') {
                 this.props.dispatch(showSignupForm(true));
             } else {
-                console.log(error.message);
+                throw error;
             }
         });
     }
