@@ -4,8 +4,9 @@ import PropTypes from 'prop-types';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
-import Items from './Items';
+import ItemCardList from '../../components/ItemCardList/';
 import Loader from '../../components/Loader/';
+import './styles.css';
 
 class ItemsContainer extends Component {
 
@@ -22,7 +23,7 @@ class ItemsContainer extends Component {
         const filteredItemsData = this.filterItemsList(filterValues, items);
 
         if (loading) return <Loader />;
-        return <Items itemsData={filteredItemsData} />;
+        return <ItemCardList itemsData={filteredItemsData} />;
     }
 }
 
